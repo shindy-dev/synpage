@@ -437,41 +437,48 @@ HTML5には要素が100種類程度あり、全て覚えるには時間がかか
 | **class** | 複数の要素に共通のスタイルや動作を適用するために使用される | - 複数の要素に共通のスタイルを適用できる<br>- 同じクラスを持つ要素を一括で操作できる | - 複数の要素に適用されるため、特定の要素だけにスタイルを適用するのが難しい場合がある<br>- 同じクラスを持つ要素が多いと、スタイルの管理が複雑になることがある |
 
 
-
 #### `id` sample
 ```
-<h1 id="headline">HeadLine</h1>
-<style>
-    #headline {
-        color: green;
-        background: rgba(50,50,50,20);
-    }
-</style>
+<section>
+    <p id="headline">HeadLine</p>
+    <style>
+        #headline {
+            color: green;
+            background: rgba(50,50,50,20);
+        }
+    </style>
+</section>
 ```
 ↓
-<p id="headline">HeadLine</p>
-<style>
-    #headline {
-        color: green;
-        background: rgba(50,50,50,20);
-    }
-</style>
+<section>
+    <p id="headline">HeadLine</p>
+    <style>
+        #headline {
+            color: green;
+            background: rgba(50,50,50,20);
+        }
+    </style>
+</section>
 
 #### `class` sample
 ```
-<p class="text">Text</p>
-<style>
-    .text {
-        color: red;
-        background: rgba(80,80,80,20)
-    }
-</style>
+<section>
+    <p class="text">Text</p>
+    <style>
+        .text {
+            color: red;
+            background: rgba(50,50,50,20);
+        }
+    </style>
+</section>
 ```
 ↓
-<p class="text">Text</p>
-<style>
-    .text {
-        color: red;
-        background: rgba(50,50,50,20);
-    }
-</style>
+<section>
+    <p class="text">Text</p>
+    <style>
+        .text {
+            color: red;
+            background: rgba(50,50,50,20);
+        }
+    </style>
+</section>
