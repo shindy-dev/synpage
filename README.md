@@ -426,7 +426,8 @@ HTML5には要素が100種類程度あり、全て覚えるには時間がかか
 実例として、`<a>`には`target`という属性があり、この属性に`_blank`を設定することで新しいタブ、ウィンドウで指定したリンクを開く動作になる。  
 
 `<a href="https://google.com">Google</a>`とすると...  <a href="https://google.com">Google</a>  
-`<a target="_blank" href="https://google.com" rel="noopener noreferrer">Google</a>`とすると...  <a target="_blank" href="https://google.com" rel="noopener noreferrer">Google</a>
+`<a target="_blank" href="https://google.com">Google</a>`とすると...  <a target="_blank" href="https://google.com">Google</a>  
+\* GitHub では `target=_"blank"` が無視される。
 
 `id`および`class`については利用頻度が高いため、以下に補足する。  
 
@@ -460,6 +461,8 @@ HTML5には要素が100種類程度あり、全て覚えるには時間がかか
     </style>
 </section>
 
+\* GitHub では スタイルシートの記載は無視される
+
 #### `class` sample
 ```
 <section>
@@ -482,3 +485,5 @@ HTML5には要素が100種類程度あり、全て覚えるには時間がかか
         }
     </style>
 </section>
+
+\* GitHub では スタイルシートの記載は無視される
