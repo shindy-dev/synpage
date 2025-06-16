@@ -4,14 +4,35 @@
 <head> <!-- ページのメタ情報を定義 -->
     <meta charset="UTF-8"> <!-- 文字エンコーディングをUTF-8に設定 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- レスポンシブデザインのための設定 -->
-    <title>Document</title> <!-- ページのタイトルを設定 -->
+    <title>HOME</title> <!-- ページのタイトルを設定 -->
     <meta name="description" content="This is a sample HTML document."> <!-- ページの説明を記述 -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 
 <body> <!-- ページの本文を記述 -->
+    <header> <!-- ページのヘッダー部分 -->
+        <div class="nav-menu-container">
+            <input type="checkbox" id="nav-menu-toggle">
+            <label for="nav-menu-toggle" class="nav-menu-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            <div id="nav-title"></div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="../">HOME</a></li>
+                    <li><a href="./pages/playground.html">Playground</a></li>
+                    <li><a href="./pages/count.html">Count</a></li>
+                    <li><a href="./pages/list.html">List</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     <main>
-        <h1>HTMLの基礎知識と主要タグの解説</h1>
-
+        <h1>HTMLの基礎知識と主要タグの解説</h1> <!-- ページタイトル -->
+        <p>このページでは、HTMLの基本的な知識と主要なタグについて解説します。</p> <!-- ページの説明 -->
         <section>
             <h2>第1章：HTMLとは何か</h2>
             <p>
@@ -100,6 +121,11 @@
         </section>
     </main>
 
+
+
+    <script>
+        document.getElementById("nav-title").textContent = document.title;
+    </script>
 </body>
 
 </html>

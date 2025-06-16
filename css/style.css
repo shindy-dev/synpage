@@ -1,0 +1,146 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* 全体のスタイル */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+main {
+    padding: 20px;
+}
+
+
+.nav-menu-container {
+    display: flex;
+    align-items: center;
+    background-color: #005186;
+    position: relative;
+    z-index: 3;
+    height: 80px;
+}
+
+#nav-title {
+    margin: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #f3f3f3;
+    z-index: 2;
+}
+
+/* メニューボタンのスタイル */
+.nav-menu-button {
+    margin: 10px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+/* メニューバーのスタイル */
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: #f3f3f3;
+    transition: 0.4s;
+}
+
+/* メニューボタンがチェックされた場合のバーのアニメーション */
+#nav-menu-toggle:checked~.nav-menu-button .bar:nth-child(1) {
+    transform: rotate(45deg) translate(-2px, 3px);
+}
+
+#nav-menu-toggle:checked~.nav-menu-button .bar:nth-child(2) {
+    opacity: 0;
+}
+
+#nav-menu-toggle:checked~.nav-menu-button .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -13px);
+}
+
+/* メニュートグルのスタイル */
+#nav-menu-toggle {
+    display: none;
+}
+
+/* メニューのスタイル */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: 0.4s;
+    z-index: 1;
+    overflow-y: auto;
+}
+
+#nav-menu-toggle:checked~.nav-menu {
+    left: 0;
+}
+
+/* メニュー内のリストのスタイル */
+.nav-menu ul {
+    list-style: none;
+    padding-top: 80px;
+    margin: 0;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: #f3f3f3;
+    font-size: 16px;
+    display: block;
+    padding: 10px 0;
+    transition: 0.2s;
+}
+
+.nav-menu ul li a:hover {
+    color: #ff8432;
+}
+
+/* 600px以上の画面幅で表示されるスタイル */
+@media screen and (min-width: 601px) {
+    .nav-menu ul {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .nav-menu ul li {
+        margin: 0 15px;
+    }
+
+    .nav-menu-button {
+        display: none;
+    }
+
+    .nav-menu {
+        display: flex;
+        position: static;
+        box-shadow: none;
+        z-index: auto;
+        flex-direction: row;
+        justify-content: flex-start;
+        height: auto;
+    }
+}
+
+/* 600px以下の画面幅で表示されるスタイル */
+@media screen and (max-width: 600px) {
+    .nav-menu-button {
+        top: 15px;
+        left: 15px;
+    }
+
+    .nav-menu {
+        background-color: #005186;
+        width: 80%;
+        left: -80%;
+    }
+
+    #nav-menu-toggle:checked~.nav-menu {
+        left: 0;
+    }
+}

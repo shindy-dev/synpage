@@ -487,3 +487,37 @@ HTML5には要素が100種類程度あり、全て覚えるには時間がかか
 </section>
 
 \* GitHub では スタイルシートの記載は無視される
+
+
+
+## ディレクトリ構造
+```
+my-website/
+├── index.html              # メインのHTMLファイル（トップページ）
+├── pages/
+│   └── about.html              # サブページ（例：会社概要）
+│   └── contact.html            # サブページ（例：お問い合わせ）
+├── css/                    # スタイルシート（CSS）を格納
+│   └── style.css
+├── js/                     # JavaScriptファイルを格納
+│   └── main.js
+├── images/                 # 画像ファイルを格納
+│   └── logo.png
+├── fonts/                  # Webフォントを格納（必要に応じて）
+├── assets/                 # その他のアセット（動画、PDFなど）
+├── favicon.ico             # ファビコン
+└── README.md               # プロジェクトの説明（開発者向け）
+```
+
+# CSS (Cascading Style Sheets)
+
+## Template
+```
+@charset "UTF-8"; /* 文字コード指定 */
+```
+
+セレクターにはタグ、id、class
+
+## paddingとmargin
+paddingは  
+![alt text](docs/images/padding_margin.jpg)
