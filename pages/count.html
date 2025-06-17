@@ -4,44 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Count</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>SYNPAGE | Count</title>
+
+    <!--style.cssの読み込み -->
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+
+    <!-- Faviconの設定 -->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+    <!-- googlefonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
     <header>
         <div class="nav-menu-container">
-            <input type="checkbox" id="nav-menu-toggle">
+            <input type="checkbox" id="nav-menu-toggle" title="メニューを開く">
             <label for="nav-menu-toggle" class="nav-menu-button">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </label>
-            <div id="nav-title">Playground</div>
+            <a id="nav-title" href="../">SYNPAGE</a>
             <nav class="nav-menu">
                 <ul>
                     <li><a href="../">HOME</a></li>
-                    <li><a href="playground.html">Playground</a></li>
-                    <li><a href="count.html">Count</a></li>
-                    <li><a href="list.html">List</a></li>
+                    <li><a href="../pages/playground.html">Playground</a></li>
+                    <li><a href="../pages/count.html">Count</a></li>
+                    <li><a href="../pages/table.html">Table</a></li>
+                    <li class="dropdown">
+                        <div>Documents</div>
+                        <ul class="dropdown-list fade-in">
+                            <li><a href="#">項目1</a></li>
+                            <li><a href="#">項目2</a></li>
+                            <li><a href="#">項目3</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
+    <main class="fade-in">
         <h1>Count</h1>
         <section>
-            <h2>Countの内容</h2>
-            <p>ここにCountの内容を記述します。</p>
+            <h2>カウント機能のサンプル</h2>
+            <p>このページでは、カウント機能のサンプルを示します。</p>
+            <button id="incrementButton">Increment</button>
+            <button id="decrementButton">Decrement</button>
+            <button id="resetButton">Reset</button>
+            <p>現在のカウント: <span id="countDisplay">0</span></p>
         </section>
     </main>
 
-
-
     <script>
-        document.getElementById("nav-title").textContent = document.title;
+        let count = 0;
+        document.getElementById('resetButton').addEventListener('click', () => {
+            count = 0;
+            document.getElementById('countDisplay').textContent = count;
+        });
+        document.getElementById('incrementButton').addEventListener('click', () => {
+            count++;
+            document.getElementById('countDisplay').textContent = count;
+        });
+
+        document.getElementById('decrementButton').addEventListener('click', () => {
+            count--;
+            document.getElementById('countDisplay').textContent = count;
+        });
     </script>
 </body>
 

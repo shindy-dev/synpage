@@ -1,36 +1,54 @@
 <!DOCTYPE html> <!-- HTML5の文書型宣言 -->
-<html lang="jp"> <!-- 言語を日本語に設定 -->
+<html lang="ja"> <!-- 言語を日本語に設定 -->
 
 <head> <!-- ページのメタ情報を定義 -->
     <meta charset="UTF-8"> <!-- 文字エンコーディングをUTF-8に設定 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- レスポンシブデザインのための設定 -->
-    <title>HOME</title> <!-- ページのタイトルを設定 -->
+    <title>SYNPAGE | HOME</title> <!-- ページのタイトルを設定 -->
     <meta name="description" content="This is a sample HTML document."> <!-- ページの説明を記述 -->
-    <link rel="stylesheet" href="./css/style.css">
+
+    <!--style.cssの読み込み -->
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+
+    <!-- Faviconの設定 -->
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+    <!-- googlefonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+
 </head>
 
 <body> <!-- ページの本文を記述 -->
     <header> <!-- ページのヘッダー部分 -->
         <div class="nav-menu-container">
-            <input type="checkbox" id="nav-menu-toggle">
-            <label for="nav-menu-toggle" class="nav-menu-button">
+            <input type="checkbox" id="nav-menu-toggle" title="メニューを開く">
+            <label for="nav-menu-toggle" class="nav-menu-button" aria-label="メニューを開く">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </label>
-            <div id="nav-title"></div>
+            <a id="nav-title" href="../">SYNPAGE</a>
             <nav class="nav-menu">
                 <ul>
-                    <li><a href="../">HOME</a></li>
+                    <li><a href="./">HOME</a></li>
                     <li><a href="./pages/playground.html">Playground</a></li>
                     <li><a href="./pages/count.html">Count</a></li>
-                    <li><a href="./pages/list.html">List</a></li>
+                    <li><a href="./pages/table.html">Table</a></li>
+                    <li class="dropdown">
+                        <div>Documents</div>
+                        <ul class="dropdown-list fade-in">
+                            <li><a href="#">項目1</a></li>
+                            <li><a href="#">項目2</a></li>
+                            <li><a href="#">項目3</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
-    <main>
+    <main class="fade-in">
         <h1>HTMLの基礎知識と主要タグの解説</h1> <!-- ページタイトル -->
         <p>このページでは、HTMLの基本的な知識と主要なタグについて解説します。</p> <!-- ページの説明 -->
         <section>
@@ -122,10 +140,6 @@
     </main>
 
 
-
-    <script>
-        document.getElementById("nav-title").textContent = document.title;
-    </script>
 </body>
 
 </html>

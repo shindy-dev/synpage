@@ -1,38 +1,111 @@
 @charset "UTF-8";
 /* CSS Document */
 
+header {
+    position: sticky;
+    top: 0;
+    align-content: center;
+    z-index: 1;
+}
+
 /* 全体のスタイル */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Kiwi Maru", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 main {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.table-container {
     padding: 20px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #f4f6f8;
+}
+
+th,
+td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tr:hover {
+    background-color: #f0f8ff;
+    transition: background-color 0.3s ease;
+}
+
+th {
+    color: #333;
+    font-weight: 600;
+}
+
+
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255, 0.7);
+    /* 半透明の白 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #ccc;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite, fadeIn 0.5s ease-in-out;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 
 .nav-menu-container {
     display: flex;
     align-items: center;
-    background-color: #005186;
+    background-color: #005086;
     position: relative;
-    z-index: 3;
     height: 80px;
+    z-index: 2;
 }
 
 #nav-title {
+    text-decoration: none;
     margin: 10px;
     font-size: 24px;
     font-weight: bold;
     color: #f3f3f3;
-    z-index: 2;
+    z-index: 3;
 }
 
 /* メニューボタンのスタイル */
 .nav-menu-button {
     margin: 10px;
-    z-index: 2;
+    z-index: 3;
     cursor: pointer;
 }
 
@@ -46,9 +119,17 @@ main {
     transition: 0.4s;
 }
 
+
+/* メニュートグルのスタイル */
+#nav-menu-toggle {
+    display: none;
+}
+
 /* メニューボタンがチェックされた場合のバーのアニメーション */
 #nav-menu-toggle:checked~.nav-menu-button .bar:nth-child(1) {
-    transform: rotate(45deg) translate(-2px, 3px);
+    transform: rotate(45deg);
+    /* transform: rotate(45deg) translate(-2px, 3px); */
+    /* transform: rotate(45deg) translate(-2px, 3px); */
 }
 
 #nav-menu-toggle:checked~.nav-menu-button .bar:nth-child(2) {
@@ -56,12 +137,8 @@ main {
 }
 
 #nav-menu-toggle:checked~.nav-menu-button .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -13px);
-}
-
-/* メニュートグルのスタイル */
-#nav-menu-toggle {
-    display: none;
+    transform: rotate(-45deg) translate(13px, -13px);
+    /* transform: rotate(-45deg) translate(8px, -13px); */
 }
 
 /* メニューのスタイル */
@@ -72,7 +149,7 @@ main {
     width: 100%;
     height: 100%;
     transition: 0.4s;
-    z-index: 1;
+    z-index: 2;
     overflow-y: auto;
 }
 
@@ -87,6 +164,7 @@ main {
     margin: 0;
 }
 
+.nav-menu ul li div,
 .nav-menu ul li a {
     text-decoration: none;
     color: #f3f3f3;
@@ -100,7 +178,36 @@ main {
     color: #ff8432;
 }
 
-/* 600px以上の画面幅で表示されるスタイル */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 160px;
+}
+
+/* ホバー時に表示 */
+.dropdown:hover .dropdown-list {
+    display: block;
+}
+
+.dropdown ul {
+    list-style: none;
+    padding: 0;
+    padding-left: 10px;
+    margin: 0;
+}
+
+
+/* レスポンシブ対応 */
+/* 601px以上の画面幅で表示されるスタイル */
 @media screen and (min-width: 601px) {
     .nav-menu ul {
         display: flex;
@@ -120,7 +227,6 @@ main {
         display: flex;
         position: static;
         box-shadow: none;
-        z-index: auto;
         flex-direction: row;
         justify-content: flex-start;
         height: auto;
@@ -130,17 +236,35 @@ main {
 /* 600px以下の画面幅で表示されるスタイル */
 @media screen and (max-width: 600px) {
     .nav-menu-button {
-        top: 15px;
-        left: 15px;
+        margin: 20px;
     }
 
     .nav-menu {
         background-color: #005186;
-        width: 80%;
-        left: -80%;
+        width: 50%;
+        left: -50%;
     }
 
     #nav-menu-toggle:checked~.nav-menu {
         left: 0;
+    }
+}
+
+
+/* アニメーション設定 */
+.fade-in {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* アニメーションの定義 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
