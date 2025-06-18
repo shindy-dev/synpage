@@ -1,6 +1,8 @@
 @charset "UTF-8";
 /* CSS Document */
 
+/* TODO:リンクホバー時に一部しか色が変わらない */
+
 header {
     position: sticky;
     top: 0;
