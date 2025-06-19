@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html> <!-- HTML5の文書型宣言 -->
 <html lang="ja"> <!-- 言語を日本語に設定 -->
 
@@ -8,7 +9,7 @@
     <meta name="description" content="This is a sample HTML document."> <!-- ページの説明を記述 -->
 
     <!--style.cssの読み込み -->
-    <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 
     <!-- Faviconの設定 -->
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
