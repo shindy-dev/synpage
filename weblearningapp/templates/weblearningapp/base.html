@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html> <!-- HTML5の文書型宣言 -->
+<html lang="ja"> <!-- 言語を日本語に設定 -->
+
+<head> <!-- ページのメタ情報を定義 -->
+    <meta charset="UTF-8"> <!-- 文字エンコーディングをUTF-8に設定 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- レスポンシブデザインのための設定 -->
+    <title>SYNPAGE | {% block title %}{% endblock %}</title> <!-- ページのタイトルを設定 -->
+
+    <!--style.cssの読み込み -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+    <!-- Faviconの設定 -->
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+    <!-- googlefonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+
+</head>
+
+<body> <!-- ページの本文を記述 -->
+    <header> <!-- ページのヘッダー部分 -->
+        <div class="nav-menu-container">
+            <input type="checkbox" id="nav-menu-toggle" title="メニューを開く">
+            <label for="nav-menu-toggle" class="nav-menu-button" aria-label="メニューを開く">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            <a id="nav-title" href="{% url 'weblearningapp:index' %}">SYNPAGE</a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="{% url 'weblearningapp:index' %}">HOME</a></li>
+                    <li><a href="{% url 'weblearningapp:playground' %}">Playground</a></li>
+                    <li><a href="{% url 'weblearningapp:count' %}">Count</a></li>
+                    <li><a href="{% url 'weblearningapp:table' %}">Table</a></li>
+                    <li class="dropdown">
+                        <div>Documents<span style="margin-left: 1.2em;">▼</span></div>
+                        <ul class="dropdown-list fade-in">
+                            <li><a href="#">HTML</a></li>
+                            <li><a href="#">CSS</a></li>
+                            <li><a href="#">JavaScript</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="fade-in">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2025 MySite</p>
+    </footer>
+
+</body>
+
+</html>

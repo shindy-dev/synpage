@@ -1,71 +1,24 @@
-{% load static %}
-<!DOCTYPE html> <!-- HTML5の文書型宣言 -->
-<html lang="ja"> <!-- 言語を日本語に設定 -->
+{% extends 'weblearningapp/base.html' %}
 
-<head> <!-- ページのメタ情報を定義 -->
-    <meta charset="UTF-8"> <!-- 文字エンコーディングをUTF-8に設定 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- レスポンシブデザインのための設定 -->
-    <title>SYNPAGE | HOME</title> <!-- ページのタイトルを設定 -->
-    <meta name="description" content="This is a sample HTML document."> <!-- ページの説明を記述 -->
+{% block title %}HOME{% endblock %}
 
-    <!--style.cssの読み込み -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+{% block content %}
+<h1>HTMLの基礎知識と主要タグの解説</h1> <!-- ページタイトル -->
+<p>このページでは、HTMLの基本的な知識と主要なタグについて解説します。</p> <!-- ページの説明 -->
+<section>
+    <h2>第1章：HTMLとは何か</h2>
+    <p>
+        HTML（HyperText Markup
+        Language）は、Webページを作成・構造化するためのマークアップ言語です。HTMLを使うことで、テキストや画像、リンク、リストなどの要素をページ上に配置し、意味づけることができます。HTMLはWebの標準技術であり、すべてのWebサイトの基盤となっています。
+    </p>
+</section>
 
-    <!-- Faviconの設定 -->
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-
-    <!-- googlefonts  -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
-
-</head>
-
-<body> <!-- ページの本文を記述 -->
-    <header> <!-- ページのヘッダー部分 -->
-        <div class="nav-menu-container">
-            <input type="checkbox" id="nav-menu-toggle" title="メニューを開く">
-            <label for="nav-menu-toggle" class="nav-menu-button" aria-label="メニューを開く">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </label>
-            <a id="nav-title" href="./">SYNPAGE</a>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="./">HOME</a></li>
-                    <li><a href="./pages/playground.html">Playground</a></li>
-                    <li><a href="./pages/count.html">Count</a></li>
-                    <li><a href="./pages/table.html">Table</a></li>
-                    <li class="dropdown">
-                        <div>Documents<span style="margin-left: 1.2em;">▼</span></div>
-                        <ul class="dropdown-list fade-in">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <main class="fade-in">
-        <h1>HTMLの基礎知識と主要タグの解説</h1> <!-- ページタイトル -->
-        <p>このページでは、HTMLの基本的な知識と主要なタグについて解説します。</p> <!-- ページの説明 -->
-        <section>
-            <h2>第1章：HTMLとは何か</h2>
-            <p>
-                HTML（HyperText Markup
-                Language）は、Webページを作成・構造化するためのマークアップ言語です。HTMLを使うことで、テキストや画像、リンク、リストなどの要素をページ上に配置し、意味づけることができます。HTMLはWebの標準技術であり、すべてのWebサイトの基盤となっています。
-            </p>
-        </section>
-
-        <section>
-            <h2>第2章：HTML文書の基本構造</h2>
-            <p>
-                HTML文書は、以下のような基本構造で記述されます。
-            </p>
-            <pre><code>&lt;!DOCTYPE html&gt;
+<section>
+    <h2>第2章：HTML文書の基本構造</h2>
+    <p>
+        HTML文書は、以下のような基本構造で記述されます。
+    </p>
+    <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="ja"&gt;
   &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -76,71 +29,66 @@
   &lt;/body&gt;
 &lt;/html&gt;
         </code></pre>
-            <ul>
-                <li><strong>&lt;!DOCTYPE html&gt;</strong>：HTML5文書であることを宣言します。</li>
-                <li><strong>&lt;html&gt;</strong>：HTML文書全体を囲むタグです。<code>lang</code>属性で言語を指定します。</li>
-                <li><strong>&lt;head&gt;</strong>：メタ情報（文字コード、タイトル、説明など）を記述します。</li>
-                <li><strong>&lt;body&gt;</strong>：Webページの本文（実際に表示される内容）を記述します。</li>
-            </ul>
-        </section>
+    <ul>
+        <li><strong>&lt;!DOCTYPE html&gt;</strong>：HTML5文書であることを宣言します。</li>
+        <li><strong>&lt;html&gt;</strong>：HTML文書全体を囲むタグです。<code>lang</code>属性で言語を指定します。</li>
+        <li><strong>&lt;head&gt;</strong>：メタ情報（文字コード、タイトル、説明など）を記述します。</li>
+        <li><strong>&lt;body&gt;</strong>：Webページの本文（実際に表示される内容）を記述します。</li>
+    </ul>
+</section>
 
-        <section>
-            <h2>第3章：主要なHTMLタグの解説</h2>
-            <p>
-                HTMLには多くのタグがありますが、ここでは代表的なものを紹介します。
-            </p>
-            <ul>
-                <li><strong>&lt;h1&gt;～&lt;h6&gt;</strong>：見出しを表します。<code>&lt;h1&gt;</code>が最も重要な見出しです。</li>
-                <li><strong>&lt;p&gt;</strong>：段落を表します。文章をまとめる際に使います。</li>
-                <li><strong>&lt;a&gt;</strong>：リンクを作成します。<code>href</code>属性でリンク先を指定します。</li>
-                <li><strong>&lt;img&gt;</strong>：画像を表示します。<code>src</code>属性で画像ファイルのパスを指定します。</li>
-                <li><strong>&lt;ul&gt;・&lt;ol&gt;・&lt;li&gt;</strong>：リスト（順不同・順序付き）を作成します。</li>
-                <li><strong>&lt;div&gt;</strong>：汎用的なブロック要素で、レイアウトやグループ化に使います。</li>
-                <li><strong>&lt;span&gt;</strong>：汎用的なインライン要素で、テキストの一部を装飾する際などに使います。</li>
-                <li><strong>&lt;table&gt;・&lt;tr&gt;・&lt;td&gt;</strong>：表を作成します。</li>
-                <li><strong>&lt;form&gt;・&lt;input&gt;・&lt;button&gt;</strong>：ユーザーからの入力を受け付けるフォームを作成します。</li>
-            </ul>
-        </section>
+<section>
+    <h2>第3章：主要なHTMLタグの解説</h2>
+    <p>
+        HTMLには多くのタグがありますが、ここでは代表的なものを紹介します。
+    </p>
+    <ul>
+        <li><strong>&lt;h1&gt;～&lt;h6&gt;</strong>：見出しを表します。<code>&lt;h1&gt;</code>が最も重要な見出しです。</li>
+        <li><strong>&lt;p&gt;</strong>：段落を表します。文章をまとめる際に使います。</li>
+        <li><strong>&lt;a&gt;</strong>：リンクを作成します。<code>href</code>属性でリンク先を指定します。</li>
+        <li><strong>&lt;img&gt;</strong>：画像を表示します。<code>src</code>属性で画像ファイルのパスを指定します。</li>
+        <li><strong>&lt;ul&gt;・&lt;ol&gt;・&lt;li&gt;</strong>：リスト（順不同・順序付き）を作成します。</li>
+        <li><strong>&lt;div&gt;</strong>：汎用的なブロック要素で、レイアウトやグループ化に使います。</li>
+        <li><strong>&lt;span&gt;</strong>：汎用的なインライン要素で、テキストの一部を装飾する際などに使います。</li>
+        <li><strong>&lt;table&gt;・&lt;tr&gt;・&lt;td&gt;</strong>：表を作成します。</li>
+        <li><strong>&lt;form&gt;・&lt;input&gt;・&lt;button&gt;</strong>：ユーザーからの入力を受け付けるフォームを作成します。</li>
+    </ul>
+</section>
 
-        <section>
-            <h2>第4章：HTMLの属性</h2>
-            <p>
-                タグには属性を指定することで、追加情報や動作を設定できます。例えば、<code>&lt;a&gt;</code>タグの<code>href</code>属性や、<code>&lt;img&gt;</code>タグの<code>alt</code>属性などがあります。
-            </p>
-            <ul>
-                <li><strong>href</strong>：リンク先のURLを指定します。</li>
-                <li><strong>src</strong>：画像やメディアファイルのパスを指定します。</li>
-                <li><strong>alt</strong>：画像が表示できない場合の代替テキストを指定します。</li>
-                <li><strong>class</strong>：CSSでスタイルを指定するためのクラス名を設定します。</li>
-                <li><strong>id</strong>：要素を一意に識別するためのIDを設定します。</li>
-            </ul>
-        </section>
+<section>
+    <h2>第4章：HTMLの属性</h2>
+    <p>
+        タグには属性を指定することで、追加情報や動作を設定できます。例えば、<code>&lt;a&gt;</code>タグの<code>href</code>属性や、<code>&lt;img&gt;</code>タグの<code>alt</code>属性などがあります。
+    </p>
+    <ul>
+        <li><strong>href</strong>：リンク先のURLを指定します。</li>
+        <li><strong>src</strong>：画像やメディアファイルのパスを指定します。</li>
+        <li><strong>alt</strong>：画像が表示できない場合の代替テキストを指定します。</li>
+        <li><strong>class</strong>：CSSでスタイルを指定するためのクラス名を設定します。</li>
+        <li><strong>id</strong>：要素を一意に識別するためのIDを設定します。</li>
+    </ul>
+</section>
 
-        <section>
-            <h2>第5章：HTMLの発展的な使い方</h2>
-            <p>
-                HTMLはCSSやJavaScriptと組み合わせることで、より高度なデザインや動的な動作を実現できます。また、<code>&lt;header&gt;</code>や<code>&lt;footer&gt;</code>、<code>&lt;nav&gt;</code>などのセクショナル要素を使うことで、ページの構造をより明確にできます。
-            </p>
-            <ul>
-                <li><strong>&lt;header&gt;</strong>：ページやセクションのヘッダー部分を表します。</li>
-                <li><strong>&lt;footer&gt;</strong>：ページやセクションのフッター部分を表します。</li>
-                <li><strong>&lt;nav&gt;</strong>：ナビゲーションリンクの集合を表します。</li>
-                <li><strong>&lt;main&gt;</strong>：ページの主な内容を示します。</li>
-                <li><strong>&lt;section&gt;</strong>：意味的な区切りとなるセクションを表します。</li>
-                <li><strong>&lt;article&gt;</strong>：独立したコンテンツ（記事など）を表します。</li>
-                <li><strong>&lt;aside&gt;</strong>：補足情報やサイドバーなどを表します。</li>
-            </ul>
-        </section>
+<section>
+    <h2>第5章：HTMLの発展的な使い方</h2>
+    <p>
+        HTMLはCSSやJavaScriptと組み合わせることで、より高度なデザインや動的な動作を実現できます。また、<code>&lt;header&gt;</code>や<code>&lt;footer&gt;</code>、<code>&lt;nav&gt;</code>などのセクショナル要素を使うことで、ページの構造をより明確にできます。
+    </p>
+    <ul>
+        <li><strong>&lt;header&gt;</strong>：ページやセクションのヘッダー部分を表します。</li>
+        <li><strong>&lt;footer&gt;</strong>：ページやセクションのフッター部分を表します。</li>
+        <li><strong>&lt;nav&gt;</strong>：ナビゲーションリンクの集合を表します。</li>
+        <li><strong>&lt;main&gt;</strong>：ページの主な内容を示します。</li>
+        <li><strong>&lt;section&gt;</strong>：意味的な区切りとなるセクションを表します。</li>
+        <li><strong>&lt;article&gt;</strong>：独立したコンテンツ（記事など）を表します。</li>
+        <li><strong>&lt;aside&gt;</strong>：補足情報やサイドバーなどを表します。</li>
+    </ul>
+</section>
 
-        <section>
-            <h2>まとめ</h2>
-            <p>
-                HTMLはWebページの基礎となる言語であり、タグや属性を使いこなすことで、さまざまな情報を構造的に表現できます。まずは基本的なタグや構造を理解し、実際に手を動かして学ぶことが大切です。
-            </p>
-        </section>
-    </main>
-
-
-</body>
-
-</html>
+<section>
+    <h2>まとめ</h2>
+    <p>
+        HTMLはWebページの基礎となる言語であり、タグや属性を使いこなすことで、さまざまな情報を構造的に表現できます。まずは基本的なタグや構造を理解し、実際に手を動かして学ぶことが大切です。
+    </p>
+</section>
+{% endblock %}

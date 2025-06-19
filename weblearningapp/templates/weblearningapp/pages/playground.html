@@ -1,63 +1,12 @@
-<!DOCTYPE html>
-<html lang="ja">
+{% extends 'weblearningapp/base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SYNPAGE | Playgroud</title>
+{% block title %}HOME{% endblock %}
 
-    <!--style.cssの読み込み -->
-    <link rel="stylesheet" href="../css/style.css" type="text/css">
-
-    <!-- Faviconの設定 -->
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
-
-    <!-- googlefonts  -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-    <header>
-        <div class="nav-menu-container">
-            <input type="checkbox" id="nav-menu-toggle" title="メニューを開く">
-            <label for="nav-menu-toggle" class="nav-menu-button" aria-label="メニューを開く">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </label>
-            <a id="nav-title" href="../">SYNPAGE</a>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="../">HOME</a></li>
-                    <li><a href="../pages/playground.html">Playground</a></li>
-                    <li><a href="../pages/count.html">Count</a></li>
-                    <li><a href="../pages/table.html">Table</a></li>
-                    <li class="dropdown">
-                        <div>Documents<span style="margin-left: 1.2em;">▼</span></div>
-                        <ul class="dropdown-list fade-in">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main class="fade-in">
-        <h1>Playground</h1>
-        <section>
-            <p>このページはPlaygroundのサンプルです。</p>
-            <h2>Playgroundの内容</h2>
-            <p>ここにPlaygroundの内容を記述します。</p>
-        </section>
-    </main>
-
-
-</body>
-
-</html>
+{% block content %}
+<h1>Playground</h1>
+<section>
+    <p>このページはPlaygroundのサンプルです。</p>
+    <h2>Playgroundの内容</h2>
+    <p>ここにPlaygroundの内容を記述します。</p>
+</section>
+{% endblock %}
