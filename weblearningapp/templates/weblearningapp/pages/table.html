@@ -1,6 +1,6 @@
 {% extends 'weblearningapp/base.html' %}
 
-{% block title %}HOME{% endblock %}
+{% block title %}Table{% endblock %}
 
 {% block content %}
 <h1>Table</h1>
@@ -8,18 +8,16 @@
     <h2>ランダムデータの表示</h2>
     <p>Pythonサーバーから取得したランダム生成データを表示します。</p>
     <div id="datatable" class="table-container">
-        <div id="loading-overlay">
-            <div class="spinner"></div>
-        </div>
         <p id="state">データを取得中...</p>
     </div>
 </section>
 <script>
+    const overlay = document.getElementById("loading-overlay");
+    overlay.style.display = "flex";
     // Fetch data from the server
     fetch("{% url 'weblearningapp:api_data' %}") // PythonサーバーのAPIエンドポイントを指定
         .then(response => response.json())
         .then(data => {
-
             const datatable = document.getElementById('datatable');
 
             // テーブル要素を作成

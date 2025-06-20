@@ -1,27 +1,47 @@
 @charset "UTF-8";
 /* CSS Document */
 
-/* 全体のスタイル */
+/* ====== ベースレイアウト ====== */
 body {
     margin: 0;
     font-family: "Kiwi Maru", serif;
     font-weight: 400;
     font-style: normal;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
 }
 
 header {
     position: relative;
     position: sticky;
+    background-color: #005086;
     top: 0;
     align-content: center;
     z-index: 1;
+    width: 100%;
 }
 
 main {
     padding-left: 20px;
     padding-right: 20px;
+    flex-grow: 1;
 }
 
+footer {
+    display: flex;
+    background-color: #005086;
+    color: #f3f3f3;
+    font-size: 14px;
+    justify-content: space-between;
+}
+
+footer>* {
+    margin: 20px;
+}
+
+/* ====== テーブル ====== */
 .table-container {
     padding: 20px;
     overflow-x: auto;
@@ -55,51 +75,54 @@ th {
     font-weight: 600;
 }
 
+/* ====== ボタン ====== */
+button {
+    align-self: flex-start;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8em 1.6em;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
+button:hover {
+    background-color: #2980b9;
+}
+
+
+/* ====== ロード画面 ====== */
 #loading-overlay {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgb(255, 255, 255, 0.7);
-    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.spinner {
-    width: 50px;
-    height: 50px;
-    border: 6px solid #ccc;
-    border-top: 6px solid #3498db;
-    border-radius: 50%;
-    animation: spin 1s linear infinite, fadeIn 0.5s ease-in-out;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
 .nav-menu-container {
     display: flex;
-    background-color: #005086;
     position: relative;
     height: 80px;
     z-index: 2;
     overflow: visible;
 }
 
-#nav-title {
-    text-decoration: none;
+.nav-menu-container>.title {
     margin: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #f3f3f3;
     z-index: 3;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    color: #f3f3f3;
 }
 
 /* メニューボタンのスタイル */
@@ -162,10 +185,8 @@ th {
     text-decoration: none;
     color: #f3f3f3;
     font-size: 16px;
-    transition: 0.2s;
     cursor: pointer;
 }
-
 
 .nav-menu ul li:hover>a,
 .nav-menu ul li:hover>div {
@@ -190,10 +211,9 @@ th {
     border-radius: 10%;
 }
 
-
-
 /* ホバー時に表示 */
-.dropdown:hover .dropdown-list {
+.dropdown:hover>.dropdown-list,
+.dropdown:focus-within>.dropdown-list {
     display: block;
 }
 
@@ -202,8 +222,25 @@ th {
     width: 100%;
 }
 
+.title {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #f3f3f3;
+}
 
-/* レスポンシブ対応 */
+/* プレーンスタイルのリンク */
+.planestyle-link {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+}
+
+.planestyle-link:hover {
+    color: #ff8432;
+}
+
+/* ====== レスポンシブ対応 ====== */
 /* 601px以上の画面幅で表示されるスタイル */
 @media screen and (min-width: 601px) {
     .nav-menu>ul {
@@ -251,20 +288,34 @@ th {
 }
 
 
-/* アニメーション設定 */
-.fade-in {
-    animation: fadeInUp 0.5s ease-out forwards;
+/* ====== アニメーション ====== */
+/* スピナー */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #ccc;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite, fadeIn 0.5s ease-in-out;
 }
 
-/* アニメーションの定義 */
-@keyframes fadeInUp {
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* フェードイン */
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }

@@ -1,11 +1,18 @@
 {% load static %}
-<!DOCTYPE html> <!-- HTML5の文書型宣言 -->
-<html lang="ja"> <!-- 言語を日本語に設定 -->
+<!-- HTML5の文書型宣言 -->
+<!DOCTYPE html>
+<!-- 言語を日本語に設定 -->
+<html lang="ja">
 
-<head> <!-- ページのメタ情報を定義 -->
-    <meta charset="UTF-8"> <!-- 文字エンコーディングをUTF-8に設定 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- レスポンシブデザインのための設定 -->
-    <title>SYNPAGE | {% block title %}{% endblock %}</title> <!-- ページのタイトルを設定 -->
+
+<head>
+    <!-- ページのメタ情報を定義 -->
+    <!-- 文字エンコーディングをUTF-8に設定 -->
+    <meta charset="UTF-8">
+    <!-- レスポンシブデザインのための設定 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+    <!-- ページのタイトルを設定 -->
+    <title>{% block title %}{% endblock %} | WebLearing</title>
 
     <!--style.cssの読み込み -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
@@ -17,11 +24,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
-
+    {% block head %}{% endblock %}
 </head>
 
-<body> <!-- ページの本文を記述 -->
-    <header> <!-- ページのヘッダー部分 -->
+<body>
+    <!-- ページの本文を記述 -->
+
+    <header>
+        <!-- ページのヘッダー部分 -->
         <div class="nav-menu-container">
             <input type="checkbox" id="nav-menu-toggle" title="メニューを開く">
             <label for="nav-menu-toggle" class="nav-menu-button" aria-label="メニューを開く">
@@ -29,7 +39,7 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </label>
-            <a id="nav-title" href="{% url 'weblearningapp:index' %}">SYNPAGE</a>
+            <a class="title" href="{% url 'weblearningapp:index' %}">WebLearing</a>
             <nav class="nav-menu">
                 <ul>
                     <li><a href="{% url 'weblearningapp:index' %}">HOME</a></li>
@@ -37,11 +47,12 @@
                     <li><a href="{% url 'weblearningapp:count' %}">Count</a></li>
                     <li><a href="{% url 'weblearningapp:table' %}">Table</a></li>
                     <li class="dropdown">
-                        <div>Documents<span style="margin-left: 1.2em;">▼</span></div>
+                        <div tabindex="0">Documents<span style="margin-left: 1.2em;">▼</span></div>
                         <ul class="dropdown-list fade-in">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
+                            <li><a href="{% url 'weblearningapp:docs' doc_type='html' %}">HTML</a></li>
+                            <li><a href="{% url 'weblearningapp:docs' doc_type='css' %}">CSS</a></li>
+                            <li><a href="{% url 'weblearningapp:docs' doc_type='js' %}">JavaScript</a></li>
+                            <li><a href="{% url 'weblearningapp:docs' doc_type='security' %}">Security</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -50,11 +61,26 @@
     </header>
 
     <main class="fade-in">
+        <div id="loading-overlay">
+            <div class="spinner"></div>
+        </div>
         {% block content %}{% endblock %}
     </main>
 
     <footer>
-        <p>© 2025 MySite</p>
+        <div class="footer-container">
+            <a class="title" href="{% url 'weblearningapp:index' %}">WebLearing</a>
+            <p>© 2025 SYNPAGE </p>
+        </div>
+        <div class="external-link-container">
+            <p>External link</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a class="planestyle-link" href="https://github.com/shindy-dev/synpage" target="_blank"
+                            rel="noopener noreferrer">GitHub</a></li>
+                </ul>
+            </nav>
+        </div>
     </footer>
 
 </body>

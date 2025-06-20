@@ -4,9 +4,10 @@ from . import views
 
 app_name = "weblearningapp"
 urlpatterns = [
-    path("", views.index, name="index"),
-    path("pages/playground", views.playground, name="playground"),
-    path("pages/count", views.count, name="count"),
-    path("pages/table", views.table, name="table"),
-    path("api/data", view=views.api_data, name="api_data"),
+    path("synpage/weblearningapp", views.index, name="index"),
+    path("synpage/weblearningapp/playground", views.playground, name="playground"),
+    path("synpage/weblearningapp/count", views.count, name="count"),
+    path("synpage/weblearningapp/table", views.table, name="table"),
+    path("synpage/weblearningapp/table/api/data", view=views.table_api_data, name="api_data"),
+    path("synpage/weblearningapp/docs/<str:doc_type>", views.docs, name="docs"),
 ]
