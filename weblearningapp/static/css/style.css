@@ -105,16 +105,15 @@ button:hover {
     align-items: center;
 }
 
-.nav-menu-container {
+#nav-menu-container {
     display: flex;
     position: relative;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
     height: 80px;
     z-index: 2;
     overflow: visible;
 }
 
-.nav-menu-container>.title {
+#nav-menu-container>.title {
     margin: 20px;
     z-index: 3;
 }
@@ -160,7 +159,7 @@ button:hover {
 }
 
 /* メニューのスタイル */
-.nav-menu {
+#nav-menu {
     display: flex;
     position: fixed;
     left: -100%;
@@ -172,13 +171,13 @@ button:hover {
     overflow: visible;
 }
 
-#nav-menu-toggle:checked~.nav-menu {
+#nav-menu-toggle:checked~#nav-menu {
     left: 0;
+    min-width: 285px;
 }
 
-
-.nav-menu ul li div,
-.nav-menu ul li a {
+#nav-menu ul li div,
+#nav-menu ul li a {
     display: block;
     padding: 10px 20px;
     text-decoration: none;
@@ -187,8 +186,8 @@ button:hover {
     cursor: pointer;
 }
 
-.nav-menu ul li:hover>a,
-.nav-menu ul li:hover>div {
+#nav-menu ul li:hover>a,
+#nav-menu ul li:hover>div {
     color: #ff8432;
     background-color: #367ba9;
     border-radius: 6px;
@@ -242,7 +241,14 @@ button:hover {
 /* ====== レスポンシブ対応 ====== */
 /* 601px以上の画面幅で表示されるスタイル */
 @media screen and (min-width: 601px) {
-    .nav-menu>ul {
+    #nav-menu {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    #nav-menu>ul {
         list-style: none;
         display: flex;
         padding: 0;
@@ -252,13 +258,6 @@ button:hover {
         display: none;
     }
 
-    .nav-menu {
-        display: flex;
-        position: static;
-        flex-direction: row;
-        justify-content: flex-start;
-    }
-
     .dropdown-list {
         box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
     }
@@ -266,16 +265,12 @@ button:hover {
 
 /* 600px以下の画面幅で表示されるスタイル */
 @media screen and (max-width: 600px) {
-    .nav-menu-button {
-        margin: 25px;
-    }
-
-    .nav-menu {
+    #nav-menu {
         width: 50%;
         left: -50%;
     }
 
-    .nav-menu>ul {
+    #nav-menu>ul {
         list-style: none;
         padding-top: 80px;
         padding-left: 0;
@@ -283,9 +278,14 @@ button:hover {
         width: 100%;
     }
 
-
-    #nav-menu-toggle:checked~.nav-menu {
+    #nav-menu-toggle:checked~#nav-menu {
         left: 0;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-menu-button {
+        margin: 25px;
+        margin-right: 0;
     }
 }
 

@@ -32,15 +32,15 @@
 
     <header>
         <!-- ページのヘッダー部分 -->
-        <div class="nav-menu-container">
+        <div id="nav-menu-container">
             <input type="checkbox" id="nav-menu-toggle" title="メニューを開く">
-            <label for="nav-menu-toggle" class="nav-menu-button" aria-label="メニューを開く">
+            <label for="nav-menu-toggle" class="nav-menu-button" aria-label="メニューを開く" tabindex="0">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </label>
             <a class="title" href="{% url 'weblearningapp:index' %}">WebLearing</a>
-            <nav class="nav-menu">
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="{% url 'weblearningapp:index' %}">HOME</a></li>
                     <li><a href="{% url 'weblearningapp:playground' %}">Playground</a></li>
@@ -82,6 +82,15 @@
             </nav>
         </div>
     </footer>
+
+
+
+    <script>
+        const checkbox = document.getElementById('nav-menu-toggle');
+        document.getElementById('dummy').addEventListener('click', function (e) {
+            checkbox.checked = false;
+        });
+    </script>
 
 </body>
 
