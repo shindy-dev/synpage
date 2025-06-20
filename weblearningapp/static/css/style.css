@@ -92,7 +92,6 @@ button:hover {
     background-color: #2980b9;
 }
 
-
 /* ====== ロード画面 ====== */
 #loading-overlay {
     display: none;
@@ -109,6 +108,7 @@ button:hover {
 .nav-menu-container {
     display: flex;
     position: relative;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
     height: 80px;
     z-index: 2;
     overflow: visible;
@@ -140,7 +140,6 @@ button:hover {
     background-color: #f3f3f3;
     transition: 0.4s;
 }
-
 
 /* メニュートグルのスタイル */
 #nav-menu-toggle {
@@ -192,7 +191,7 @@ button:hover {
 .nav-menu ul li:hover>div {
     color: #ff8432;
     background-color: #367ba9;
-    border-radius: 10%;
+    border-radius: 6px;
 }
 
 .dropdown {
@@ -208,7 +207,7 @@ button:hover {
     background-color: #005086;
     top: 100%;
     left: 0;
-    border-radius: 10%;
+    border-radius: 6px;
 }
 
 /* ホバー時に表示 */
@@ -256,9 +255,12 @@ button:hover {
     .nav-menu {
         display: flex;
         position: static;
-        box-shadow: none;
         flex-direction: row;
         justify-content: flex-start;
+    }
+
+    .dropdown-list {
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
     }
 }
 
