@@ -7,10 +7,17 @@
 <section>
     <h2>カウント機能のサンプル</h2>
     <p>このページでは、カウント機能のサンプルを示します。</p>
-    <button id="incrementButton">Increment</button>
-    <button id="decrementButton">Decrement</button>
+    <div id="count-container" style="display: flex; align-items: center;">
+        <button id="incrementButton">+</button>
+        <span id="countDisplay">0</span>
+        <button id="decrementButton">-</button>
+        <style>
+            #count-container>* {
+                margin: 20px;
+            }
+        </style>
+    </div>
     <button id="resetButton">Reset</button>
-    <p>現在のカウント: <span id="countDisplay">0</span></p>
 </section>
 
 
