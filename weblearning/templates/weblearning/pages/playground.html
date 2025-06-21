@@ -116,20 +116,12 @@
 
     <script>
 
-
         const htmlEditor = CodeMirror.fromTextArea(document.getElementById("htmlInput"), {
             mode: "htmlmixed",
             lineNumbers: true,
             theme: "darcula",
             tabSize: 2,
             lineWrapping: true
-        });
-
-        htmlEditor.on("change", () => {
-            const html = htmlEditor.getValue().replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, '');
-            const css = cssEditor.getValue();
-            const output = `<style>${css}</style>${html}`;
-            document.getElementById("outputFrame").srcdoc = output;
         });
 
         const cssEditor = CodeMirror.fromTextArea(document.getElementById("cssInput"), {
@@ -139,20 +131,22 @@
             tabSize: 2,
             lineWrapping: true
         });
-        cssEditor.on("change", () => {
-            const html = htmlEditor.getValue().replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, '');
-            const css = cssEditor.getValue();
-            const output = `<style>${css}</style>${html}`;
-            document.getElementById("outputFrame").srcdoc = output;
-        });
 
         function updatePreview() {
             const html = htmlEditor.getValue().replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, '');
             const css = cssEditor.getValue();
             const output = `<style>${css}</style>${html}`;
-            const iframe = document.getElementById("outputFrame");
-            iframe.srcdoc = output;
+            document.getElementById("outputFrame").srcdoc = output;
         }
+
+        // エディタ変更時にプレビュー更新
+        htmlEditor.on("change", updatePreview);
+        cssEditor.on("change", updatePreview);
+
+        // テキストエリアのinputイベントにも対応（エディタ未初期化時の保険）
+        document.getElementById("htmlInput").addEventListener("input", updatePreview);
+        document.getElementById("cssInput").addEventListener("input", updatePreview);
+
 
         function clearInput() {
             htmlEditor.setValue("");
@@ -161,6 +155,9 @@
         }
 
         function showSample() {
+            htmlEditor.off("change", updatePreview);
+            cssEditor.off("change", updatePreview);
+
             htmlEditor.setValue(`<h1>見出し１</h1>
 <h2>見出し２</h2>
 <h3>見出し３</h3>
@@ -236,12 +233,10 @@ th {
     color: #333;
     font-weight: 600;
 }`);
+            htmlEditor.on("change", updatePreview);
+            cssEditor.on("change", updatePreview);
             updatePreview();
         }
-
-        // 入力が変更されるたびにプレビューを更新
-        document.getElementById("htmlInput").addEventListener("input", updatePreview);
-        document.getElementById("cssInput").addEventListener("input", updatePreview);
 
         // 初期表示
         window.addEventListener("DOMContentLoaded", showSample);
