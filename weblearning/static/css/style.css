@@ -9,6 +9,7 @@ body {
     font-style: normal;
     display: flex;
     flex-direction: column;
+    align-items: center;
     min-height: 100dvh;
     width: 100dvw;
 }
@@ -24,13 +25,13 @@ header {
 }
 
 main {
-    padding-left: 20px;
-    padding-right: 20px;
+    width: 90dvw;
     flex-grow: 1;
 }
 
 footer {
     display: flex;
+    width: 100dvw;
     background-color: #005086;
     color: #f3f3f3;
     justify-content: space-between;
@@ -249,6 +250,10 @@ button:hover {
 /* ====== レスポンシブ対応 ====== */
 /* 801px以上の画面幅で表示されるスタイル */
 @media screen and (min-width: 801px) {
+    main {
+        width: 80dvw;
+    }
+
     #nav-menu {
         display: flex;
         position: static;
