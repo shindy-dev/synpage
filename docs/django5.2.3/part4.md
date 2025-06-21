@@ -113,4 +113,4 @@ class BookDetailView(DetailView):
 
 以上が、基本的なMVTに基づくコーディングフローである。
 
-Next ... [Part 5: 実際のコーディングフローとサンプルコード（Django 5.2.4）](part5.md)
+Next ... [Part 5: 実際のコーディングフローとサンプルコード（Django 5.2.3）](part5.md)
