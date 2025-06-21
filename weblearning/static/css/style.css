@@ -164,6 +164,7 @@ button:hover {
 #nav-menu {
     display: block;
     position: fixed;
+    top: 0;
     left: -100vw;
     left: -100dvw;
     width: 100vw;
