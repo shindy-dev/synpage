@@ -34,7 +34,7 @@
         <!-- ページのヘッダー部分 -->
         <div id="nav-menu-container">
             <input type="checkbox" id="nav-menu-toggle" title="メニューを開く">
-            <label for="nav-menu-toggle" class="nav-menu-button" aria-label="メニューを開く" tabindex="0">
+            <label for="nav-menu-toggle" id="nav-menu-icon" aria-label="メニューを開く" tabindex="0">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -69,13 +69,13 @@
     </main>
 
     <footer>
-        <div class="footer-container">
+        <div id="footer-container">
             <a class="title" href="{% url 'weblearning:index' %}" tabindex="-1">WebLearing</a>
             <p>© 2025 SYNPAGE </p>
         </div>
-        <div class="external-link-container">
+        <div id="external-link-container">
             <p>External link</p>
-            <nav class="footer-nav">
+            <nav id="footer-nav">
                 <ul>
                     <li><a class="planestyle-link" href="https://github.com/shindy-dev/synpage" target="_blank"
                             rel="noopener noreferrer">GitHub</a></li>
