@@ -160,7 +160,7 @@ button:hover {
 
 /* メニューのスタイル */
 #nav-menu {
-    display: flex;
+    display: block;
     position: fixed;
     left: -100dvw;
     width: 100dvw;
