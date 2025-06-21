@@ -251,7 +251,7 @@ button:hover {
 /* 801px以上の画面幅で表示されるスタイル */
 @media screen and (min-width: 801px) {
     main {
-        width: 80dvw;
+        width: 85dvw;
     }
 
     #nav-menu {
