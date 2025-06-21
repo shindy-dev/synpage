@@ -251,8 +251,8 @@ button:hover {
 }
 
 /* ====== レスポンシブ対応 ====== */
-/* 601px以上の画面幅で表示されるスタイル */
-@media screen and (min-width: 601px) {
+/* 801px以上の画面幅で表示されるスタイル */
+@media screen and (min-width: 801px) {
     #nav-menu {
         display: flex;
         position: static;
@@ -275,8 +275,8 @@ button:hover {
     }
 }
 
-/* 600px以下の画面幅で表示されるスタイル */
-@media screen and (max-width: 600px) {
+/* 800px以下の画面幅で表示されるスタイル */
+@media screen and (max-width: 800px) {
     #nav-menu {
         width: 50%;
         left: -50%;
