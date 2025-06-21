@@ -5,7 +5,7 @@
 html,
 body {
     margin: 0;
-    width: 100dvw;
+    width: 100%;
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@ main {
 
 footer {
     display: flex;
-    width: 100dvw;
+    width: 100%;
     justify-content: space-between;
     background-color: #005086;
     color: #f3f3f3;
@@ -239,7 +239,7 @@ button:hover {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100dvw;
+    width: 100%;
     height: 100dvh;
     background: rgb(1, 1, 1, 0.7);
     transition: 0.4s;
