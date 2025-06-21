@@ -1,3 +1,12 @@
+
+// 画面回転関連
+const portrait = window.matchMedia("(orientation: portrait)");
+portrait.addEventListener("change", () => {
+    const viewport = document.querySelector("meta[name=viewport]");
+    viewport.setAttribute("content", "width=device-width, initial-scale=1.0");
+});
+
+// ナビゲーションドロワー関連
 class NavDrawer {
     constructor(toggleId, dummyId) {
         this.checkbox = document.getElementById(toggleId);
