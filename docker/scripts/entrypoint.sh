@@ -3,6 +3,7 @@ set -e  # エラーがあれば即終了
 
 # マーカーパス
 MARKER_FILE="/var/.entrypoint_initialized"
+source /root/.bashrc
 
 # 初回起動チェック
 if [ ! -f "$MARKER_FILE" ]; then
@@ -10,6 +11,9 @@ if [ ! -f "$MARKER_FILE" ]; then
     
     # git pull モード指定
     git config --global pull.rebase true
+    git config --global user.name "$GITHUB_USER"
+    git config --global user.email "$GITHUB_EMAIL"
+    
     # git pull
     (cd /home/dev/github/synpage && git clone -q https://github.com/shindy-dev/synpage.git .)
 
@@ -29,7 +33,6 @@ fi
 
 
 # synpage環境のアクティベート
-source /root/.bashrc
 micromamba activate synpage
 # ディレクトリ移動
 cd /home/dev/github/synpage

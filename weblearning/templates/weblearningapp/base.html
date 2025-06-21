@@ -39,20 +39,20 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </label>
-            <a class="title" href="{% url 'weblearningapp:index' %}">WebLearing</a>
+            <a class="title" href="{% url 'weblearning:index' %}">WebLearing</a>
             <nav id="nav-menu">
                 <ul>
-                    <li><a href="{% url 'weblearningapp:index' %}">HOME</a></li>
-                    <li><a href="{% url 'weblearningapp:playground' %}">Playground</a></li>
-                    <li><a href="{% url 'weblearningapp:count' %}">Count</a></li>
-                    <li><a href="{% url 'weblearningapp:table' %}">Table</a></li>
+                    <li><a href="{% url 'weblearning:index' %}">HOME</a></li>
+                    <li><a href="{% url 'weblearning:playground' %}">Playground</a></li>
+                    <li><a href="{% url 'weblearning:count' %}">Count</a></li>
+                    <li><a href="{% url 'weblearning:table' %}">Table</a></li>
                     <li class="dropdown">
                         <div tabindex="0">Documents<span style="margin-left: 1.2em;">▼</span></div>
                         <ul class="dropdown-list fade-in">
-                            <li><a href="{% url 'weblearningapp:docs' doc_type='html' %}">HTML</a></li>
-                            <li><a href="{% url 'weblearningapp:docs' doc_type='css' %}">CSS</a></li>
-                            <li><a href="{% url 'weblearningapp:docs' doc_type='js' %}">JavaScript</a></li>
-                            <li><a href="{% url 'weblearningapp:docs' doc_type='security' %}">Security</a></li>
+                            <li><a href="{% url 'weblearning:docs' doc_type='html' %}">HTML</a></li>
+                            <li><a href="{% url 'weblearning:docs' doc_type='css' %}">CSS</a></li>
+                            <li><a href="{% url 'weblearning:docs' doc_type='js' %}">JavaScript</a></li>
+                            <li><a href="{% url 'weblearning:docs' doc_type='security' %}">Security</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -69,7 +69,7 @@
 
     <footer>
         <div class="footer-container">
-            <a class="title" href="{% url 'weblearningapp:index' %}">WebLearing</a>
+            <a class="title" href="{% url 'weblearning:index' %}">WebLearing</a>
             <p>© 2025 SYNPAGE </p>
         </div>
         <div class="external-link-container">

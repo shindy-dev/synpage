@@ -1,4 +1,4 @@
-{% extends 'weblearningapp/base.html' %}
+{% extends 'weblearning/base.html' %}
 
 {% block title %}Table{% endblock %}
 
@@ -15,7 +15,7 @@
     const overlay = document.getElementById("loading-overlay");
     overlay.style.display = "flex";
     // Fetch data from the server
-    fetch("{% url 'weblearningapp:api_data' %}") // PythonサーバーのAPIエンドポイントを指定
+    fetch("{% url 'weblearning:api_data' %}") // PythonサーバーのAPIエンドポイントを指定
         .then(response => response.json())
         .then(data => {
             const datatable = document.getElementById('datatable');
