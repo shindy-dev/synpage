@@ -1,6 +1,6 @@
 ## Part 2: インストール手順／環境構築
 
-Django 5.2.1 のインストール手順は、Python 環境の用意から開始し、仮想環境の作成、そして `pip` を用いた Django 本体のインストールまでをカバーする。主要な手順は以下のとおりである。
+Django 5.2.4 のインストール手順は、Python 環境の用意から開始し、仮想環境の作成、そして `pip` を用いた Django 本体のインストールまでをカバーする。主要な手順は以下のとおりである。
 
 ### 1. Python のインストール
 Django は Python 3.8 以降を要件としている。本ドキュメントでは Python 3.13 を前提とする。  
@@ -25,11 +25,11 @@ pip install --upgrade pip
 最新版確認は `pip --version` で実行可能。
 
 ### 4. Django のインストール
-仮想環境内で `pip` を用いて Django 5.2.1 をインストールする。  
+仮想環境内で `pip` を用いて Django 5.2.4 をインストールする。  
 ```bash
-pip install Django==5.2.1
+pip install Django==5.2.4
 ```  
-公式リリースノートにも記載のとおり、LTS 版である 5.2.1 を指定することが推奨される。インストール完了後、`python -m django --version` でバージョンを確認できる。
+公式リリースノートにも記載のとおり、LTS 版である 5.2.4 を指定することが推奨される。インストール完了後、`python -m django --version` でバージョンを確認できる。
 
 ### 5. プロジェクトの初期化
 Django プロジェクトを新規作成するために、`django-admin` コマンドを実行する。  
@@ -64,6 +64,6 @@ python manage.py runserver
 - [Django 公式ダウンロードページ](https://www.djangoproject.com/download/)  
 - [Python.org: Download Python](https://www.python.org/downloads/)  
 - DigitalOcean: [How To Install the Django Web Framework on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-22-04)  
-- Django PyPI: [Django 5.2.1 on PyPI](https://pypi.org/project/Django/)
+- Django PyPI: [Django 5.2.4 on PyPI](https://pypi.org/project/Django/)
 
 Next ... [Part 3: ファイル構成の詳細](part3.md)

@@ -40,7 +40,7 @@ call "%SCRIPTSPATH%\activate"
 
 echo|set /p="install library ... "
 rem ライブラリインストール
-call python -m pip --disable-pip-version-check --quiet install -r "%~dp0requirements.txt"
+call python -m pip --disable-pip-version-check --quiet install -r "%~dp0docker/requirements.txt"
 echo ok
 
 echo.

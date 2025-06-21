@@ -43,7 +43,7 @@ fi
 
 echo -n "install library ... "
 # ライブラリインストール
-pip --disable-pip-version-check --quiet install -r "`cd $(dirname ${0}) && pwd`/requirements.txt"
+pip --disable-pip-version-check --quiet install -r "`cd $(dirname ${0}) && pwd`/docker/requirements.txt"
 echo "ok"
 
 echo -e
