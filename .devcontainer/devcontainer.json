@@ -1,0 +1,8 @@
+{
+	"name": "synpage",
+	"dockerComposeFile": [
+		"../docker-compose.yaml"
+	],
+	"service": "synpage",
+	"workspaceFolder": "/home/dev/github/synpage"
+}

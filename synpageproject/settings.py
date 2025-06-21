@@ -26,7 +26,12 @@ SECRET_KEY = "django-insecure-i6rhxjam$zyb(q*upd+x22bb1@h4+%7*kl1inj87ul45wdttc@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["synpage.onrender.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    "synpage-174434849634.europe-west1.run.app",
+    "synpage.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
