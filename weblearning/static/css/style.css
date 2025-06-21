@@ -278,7 +278,6 @@ button:hover {
     #nav-menu {
         width: 50dvw;
         height: 100dvh;
-        left: -50dvw;
     }
 
     #nav-menu>ul {
