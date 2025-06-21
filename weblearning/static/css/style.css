@@ -10,25 +10,24 @@ html {
 
 body {
     margin: 0;
-    font-family: "Kiwi Maru", serif;
-    font-weight: 400;
-    font-style: normal;
+    width: 100dvw;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100dvh;
-    width: 100dvw;
+    font-family: "Kiwi Maru", serif;
+    font-weight: 400;
+    font-style: normal;
     font-size: 1rem;
 }
 
 header {
-    position: relative;
     position: sticky;
-    background-color: #005086;
     top: 0;
-    align-content: center;
     z-index: 1;
     width: 100%;
+    background-color: #005086;
+    align-content: center;
 }
 
 main {
@@ -39,9 +38,9 @@ main {
 footer {
     display: flex;
     width: 100dvw;
+    justify-content: space-between;
     background-color: #005086;
     color: #f3f3f3;
-    justify-content: space-between;
 }
 
 footer>* {
@@ -85,11 +84,11 @@ th {
 /* ====== ボタン ====== */
 button {
     align-self: flex-start;
+    padding: 0.8em 1.0em;
+    border: none;
+    border-radius: 6px;
     background-color: #3498db;
     color: white;
-    border: none;
-    padding: 0.8em 1.0em;
-    border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -130,13 +129,11 @@ button:hover {
     color: #f3f3f3;
 }
 
-/* メニューボタンのスタイル */
 .nav-menu-button {
     z-index: 3;
     cursor: pointer;
 }
 
-/* メニューバーのスタイル */
 .bar {
     display: block;
     width: 24px;
@@ -146,12 +143,10 @@ button:hover {
     transition: 0.4s;
 }
 
-/* メニュートグルのスタイル */
 #nav-menu-toggle {
     display: none;
 }
 
-/* メニューボタンがチェックされた場合のバーのアニメーション */
 #nav-menu-toggle:checked~.nav-menu-button .bar:nth-child(1) {
     transform: rotate(45deg) translate(5.6px, 5.6px);
 }
@@ -164,15 +159,14 @@ button:hover {
     transform: rotate(-45deg) translate(5.6px, -5.6px);
 }
 
-/* メニューのスタイル */
 #nav-menu {
     display: block;
     position: fixed;
     top: 0;
     left: -100dvw;
     width: 100dvw;
-    transition: 0.4s;
     background-color: #005086;
+    transition: 0.4s;
     z-index: 2;
 }
 
@@ -183,8 +177,8 @@ button:hover {
     left: 0;
     width: 100dvw;
     height: 100dvh;
-    transition: 0.4s;
     background: rgb(1, 1, 1, 0.7);
+    transition: 0.4s;
     z-index: 1;
 }
 
@@ -215,17 +209,16 @@ button:hover {
 
 .dropdown-list {
     display: none;
-    list-style: none;
-    padding: 0;
     position: absolute;
-    z-index: 3;
-    background-color: #005086;
     top: 100%;
     left: 0;
+    z-index: 3;
+    list-style: none;
+    padding: 0;
+    background-color: #005086;
     border-radius: 6px;
 }
 
-/* ホバー時に表示 */
 .dropdown:hover>.dropdown-list,
 .dropdown:focus-within>.dropdown-list {
     display: block;
@@ -237,17 +230,16 @@ button:hover {
 }
 
 .title {
-    text-decoration: none;
+    color: #f3f3f3;
     font-size: 1.45rem;
     font-weight: bold;
-    color: #f3f3f3;
+    text-decoration: none;
 }
 
-/* プレーンスタイルのリンク */
 .planestyle-link {
-    text-decoration: none;
-    cursor: pointer;
     color: inherit;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .planestyle-link:hover {
@@ -255,7 +247,6 @@ button:hover {
 }
 
 /* ====== レスポンシブ対応 ====== */
-/* 801px以上の画面幅で表示されるスタイル */
 @media screen and (min-width: 801px) {
     main {
         width: 85dvw;
@@ -269,8 +260,8 @@ button:hover {
     }
 
     #nav-menu>ul {
-        list-style: none;
         display: flex;
+        list-style: none;
         padding: 0;
     }
 
@@ -283,7 +274,6 @@ button:hover {
     }
 }
 
-/* 800px以下の画面幅で表示されるスタイル */
 @media screen and (max-width: 800px) {
     #nav-menu {
         width: 50dvw;
@@ -310,9 +300,7 @@ button:hover {
     }
 }
 
-
 /* ====== アニメーション ====== */
-/* スピナー */
 .spinner {
     width: 50px;
     height: 50px;
@@ -328,7 +316,6 @@ button:hover {
     }
 }
 
-/* フェードイン */
 .fade-in {
     animation: fadeIn 0.5s ease-out forwards;
 }
