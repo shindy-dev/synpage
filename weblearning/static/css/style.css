@@ -164,11 +164,9 @@ button:hover {
     position: fixed;
     left: -100dvw;
     width: 100dvw;
-    height: 100%;
     transition: 0.4s;
     background-color: #005086;
     z-index: 2;
-    overflow: visible;
 }
 
 #dummy {
@@ -279,6 +277,7 @@ button:hover {
 @media screen and (max-width: 800px) {
     #nav-menu {
         width: 50dvw;
+        height: 100dvh;
         left: -50dvw;
     }
 
