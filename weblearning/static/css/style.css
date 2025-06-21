@@ -9,15 +9,8 @@ body {
     font-style: normal;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     min-height: 100dvh;
-    width: 100vw;
     width: 100dvw;
-    font-size: 1rem;
-    /* Safari, Chrome, Edge */
-    -webkit-text-size-adjust: auto;
-    /* Firefox, IE */
-    text-size-adjust: auto;
 }
 
 header {
@@ -40,7 +33,6 @@ footer {
     display: flex;
     background-color: #005086;
     color: #f3f3f3;
-    font-size: 1rem;
     justify-content: space-between;
 }
 
@@ -88,9 +80,8 @@ button {
     background-color: #3498db;
     color: white;
     border: none;
-    padding: 0.8em 1.6em;
+    padding: 0.8em 1.0em;
     border-radius: 6px;
-    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -170,9 +161,7 @@ button:hover {
     display: block;
     position: fixed;
     top: 0;
-    left: -100vw;
     left: -100dvw;
-    width: 100vw;
     width: 100dvw;
     transition: 0.4s;
     background-color: #005086;
@@ -184,9 +173,7 @@ button:hover {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
     width: 100dvw;
-    height: 100vh;
     height: 100dvh;
     transition: 0.4s;
     background: rgb(1, 1, 1, 0.7);
@@ -204,7 +191,6 @@ button:hover {
     padding: 10px 20px;
     text-decoration: none;
     color: #f3f3f3;
-    font-size: 1rem;
     cursor: pointer;
 }
 
@@ -288,11 +274,8 @@ button:hover {
 /* 800px以下の画面幅で表示されるスタイル */
 @media screen and (max-width: 800px) {
     #nav-menu {
-        width: 50vw;
         width: 50dvw;
-        height: 100vh;
         height: 100dvh;
-        left: -50vw;
         left: -50dvw;
     }
 
