@@ -231,7 +231,6 @@ button:hover {
 #nav-menu ul li:hover>a,
 #nav-menu ul li:hover>div {
     color: #ff8432;
-    background-color: #367ba9;
     border-radius: 6px;
 }
 
@@ -247,7 +246,7 @@ button:hover {
     z-index: 1;
 }
 
-ß #footer-container {
+#footer-container {
     display: flex;
     flex-direction: column;
     color: #f3f3f3;
