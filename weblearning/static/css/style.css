@@ -9,8 +9,8 @@ body {
     font-style: normal;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    width: 100vw;
+    min-height: 100dvh;
+    width: 100dvw;
 }
 
 header {
@@ -162,9 +162,9 @@ button:hover {
 #nav-menu {
     display: flex;
     position: fixed;
-    left: -100vw;
-    width: 100vw;
-    height: 100vh;
+    left: -100dvw;
+    width: 100dvw;
+    height: 100%;
     transition: 0.4s;
     background-color: #005086;
     z-index: 2;
@@ -176,8 +176,8 @@ button:hover {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100dvw;
+    height: 100dvh;
     transition: 0.4s;
     background: rgb(1, 1, 1, 0.7);
     z-index: 1;
@@ -278,8 +278,8 @@ button:hover {
 /* 800px以下の画面幅で表示されるスタイル */
 @media screen and (max-width: 800px) {
     #nav-menu {
-        width: 50%;
-        left: -50%;
+        width: 50dvw;
+        left: -50dvw;
     }
 
     #nav-menu>ul {
