@@ -28,6 +28,8 @@ header {
     width: 100%;
     background-color: #005086;
     align-content: center;
+    /* バウンススクロール抑制 */
+    overscroll-behavior: none;
 }
 
 main {
