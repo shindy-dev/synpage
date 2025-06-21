@@ -57,6 +57,7 @@
                     </li>
                 </ul>
             </nav>
+            <div id="dummy"></div>
         </div>
     </header>
 
@@ -83,15 +84,7 @@
         </div>
     </footer>
 
-
-
-    <script>
-        const checkbox = document.getElementById('nav-menu-toggle');
-        document.getElementById('dummy').addEventListener('click', function (e) {
-            checkbox.checked = false;
-        });
-    </script>
-
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 
 </html>

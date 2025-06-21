@@ -171,6 +171,18 @@ button:hover {
     overflow: visible;
 }
 
+#dummy {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: 0.4s;
+    background: rgb(1, 1, 1, 0.7);
+    z-index: 1;
+}
+
 #nav-menu-toggle:checked~#nav-menu {
     left: 0;
     min-width: 285px;
