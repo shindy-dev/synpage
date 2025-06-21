@@ -16,6 +16,8 @@
 
     <!--style.cssの読み込み -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <!-- 外部リンクアイコン -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Faviconの設定 -->
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
@@ -77,8 +79,12 @@
             <p>External link</p>
             <nav id="footer-nav">
                 <ul>
-                    <li><a class="planestyle-link" href="https://github.com/shindy-dev/synpage" target="_blank"
-                            rel="noopener noreferrer">GitHub</a></li>
+                    <li>
+                        <a class="planestyle-link" href="https://github.com/shindy-dev/synpage" target="_blank"
+                            rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>

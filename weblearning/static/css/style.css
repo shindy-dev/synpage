@@ -247,12 +247,15 @@ button:hover {
     z-index: 1;
 }
 
-#footer-container {
+ß #footer-container {
     display: flex;
     flex-direction: column;
     color: #f3f3f3;
 }
 
+#external-link-container ul {
+    list-style: none;
+}
 
 /* ====== レスポンシブ対応 ====== */
 @media screen and (min-width: 801px) {
