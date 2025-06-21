@@ -159,6 +159,7 @@ button:hover {
 
 /* ====== ロード画面 ====== */
 #loading-overlay {
+    margin: 0;
     display: none;
     position: fixed;
     top: 0;
@@ -246,6 +247,7 @@ button:hover {
 }
 
 #dummy {
+    margin: 0;
     display: none;
     position: fixed;
     top: 0;
