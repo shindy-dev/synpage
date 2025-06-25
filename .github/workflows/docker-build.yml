@@ -50,34 +50,3 @@ jobs:
           platforms: linux/amd64,linux/arm64
           cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:cache
           cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:cache,mode=max
-
-  cleanup:
-      needs: build-and-push
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout repo
-          uses: actions/checkout@v3
-
-        - name: Install jq
-          run: sudo apt-get update && sudo apt-get install -y jq
-
-        - name: Cleanup untagged versions
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            OWNER: ${{ github.repository_owner }}
-            PACKAGE: synpage
-            ORG_PAT: ${{ secrets.ORG_PAT }}
-          run: |
-            echo "$ORG_PAT" | gh auth login --with-token
-
-            # タグなしバージョンIDを取得
-            VERSIONS=$(gh api -H "Accept: application/vnd.github+json" \
-              "/users/${OWNER}/packages/container/${PACKAGE}/versions" \
-              --paginate | jq '.[] | select(.metadata.container.tags | length == 0) | .id')
-
-            # 削除処理
-            for VERSION_ID in ${VERSIONS}; do
-              echo "Deleting version ID: ${VERSION_ID}"
-              gh api -X DELETE -H "Accept: application/vnd.github+json" \
-                "/users/${OWNER}/packages/container/${PACKAGE}/versions/${VERSION_ID}"
-            done
