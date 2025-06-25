@@ -1,0 +1,8 @@
+{% extends 'weblearning/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<!-- safeフィルターでHTMLをそのまま出力 -->
+{{ content|safe }}
+{% endblock %}

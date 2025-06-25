@@ -1,0 +1,102 @@
+{% load static %}
+<!-- HTML5の文書型宣言 -->
+<!DOCTYPE html>
+<!-- 言語を日本語に設定 -->
+<html lang="ja">
+
+
+<head>
+    <!-- ページのメタ情報を定義 -->
+    <!-- 文字エンコーディングをUTF-8に設定 -->
+    <meta charset="UTF-8">
+    <!-- レスポンシブデザインのための設定 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <!-- ページのタイトルを設定 -->
+    <title>{% block title %}{{ title }}{% endblock %} | WebLearning</title>
+
+    <!--style.cssの読み込み -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <!-- 外部リンクアイコン -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Faviconの設定 -->
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <!-- ページの本文を記述 -->
+
+    <header>
+        <!-- ページのヘッダー部分 -->
+        <div id="nav-menu-container">
+            <input type="checkbox" id="nav-menu-toggle" title="メニューを開く">
+            <label for="nav-menu-toggle" id="nav-menu-icon" aria-label="メニューを開く" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            <a class="title" href="{% url 'weblearning:index' %}" tabindex="-1">WebLearning</a>
+            <nav id="nav-menu">
+                <div></div>
+                <ul>
+                    <li><a href="{% url 'weblearning:index' %}">HOME</a></li>
+                    <li><a href="{% url 'weblearning:playground' %}">Playground</a></li>
+                    <li><a href="{% url 'weblearning:count' %}">Count</a></li>
+                    <li><a href="{% url 'weblearning:table' %}">Table</a></li>
+                    <li class="dropdown">
+                        <div tabindex="0">Documents<span style="margin-left: 1.2em;">▼</span></div>
+                        <ul class="dropdown-list fade-in">
+                            <li><a href="{% url 'weblearning:docs' doc_type='html' %}">HTML</a>
+                            </li>
+                            <li><a href="{% url 'weblearning:docs' doc_type='css' %}">CSS</a></li>
+                            <li><a href="{% url 'weblearning:docs' doc_type='js' %}">JavaScript</a></li>
+                            <li><a href="{% url 'weblearning:docs' doc_type='security' %}">Security</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div id="nav-logout">
+                <p style="color: white;">{{ user.username }}
+                <p>
+                <form action="{% url 'weblearning:logout' %}" method="post" style="display:inline; padding: 0 20px;">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+            <div id="dummy"></div>
+        </div>
+    </header>
+
+    <main class="fade-in">
+        <div id="loading-overlay">
+            <div class="spinner"></div>
+        </div>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div id="footer-container">
+            <a class="title" href="{% url 'weblearning:index' %}" tabindex="-1">WebLearning</a>
+            <p>© 2025 SYNPAGE </p>
+        </div>
+        <div id="external-link-container">
+            <p>External link</p>
+            <nav id="footer-nav">
+                <ul>
+                    <li>
+                        <a class="planestyle-link" href="https://github.com/shindy-dev/synpage" target="_blank"
+                            rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

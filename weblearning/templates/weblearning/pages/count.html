@@ -1,0 +1,38 @@
+{% extends 'weblearning/base.html' %}
+
+{% block content %}
+<h1>Count</h1>
+<section>
+    <h2>カウント機能のサンプル</h2>
+    <p>このページでは、カウント機能のサンプルを示します。</p>
+    <div id="count-container" style="display: flex; align-items: center;">
+        <button id="incrementButton">+</button>
+        <span id="countDisplay">0</span>
+        <button id="decrementButton">-</button>
+        <style>
+            #count-container>* {
+                margin: 20px;
+            }
+        </style>
+    </div>
+    <button id="resetButton">Reset</button>
+</section>
+
+
+<script>
+    let count = 0;
+    document.getElementById('resetButton').addEventListener('click', () => {
+        count = 0;
+        document.getElementById('countDisplay').textContent = count;
+    });
+    document.getElementById('incrementButton').addEventListener('click', () => {
+        count++;
+        document.getElementById('countDisplay').textContent = count;
+    });
+
+    document.getElementById('decrementButton').addEventListener('click', () => {
+        count--;
+        document.getElementById('countDisplay').textContent = count;
+    });
+</script>
+{% endblock %}

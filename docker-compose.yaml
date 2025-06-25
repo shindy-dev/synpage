@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  synpage:
+    container_name: synpage
+    image: ghcr.io/shindy-dev/synpage:latest
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - "8000:8000"
+    hostname: synpage
+    stdin_open: true
+    tty: true

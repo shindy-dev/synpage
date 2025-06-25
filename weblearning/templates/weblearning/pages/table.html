@@ -1,0 +1,63 @@
+{% extends 'weblearning/base.html' %}
+
+{% block content %}
+<h1>Table</h1>
+<section>
+    <h2>ランダムデータの表示</h2>
+    <p>Djangoサーバーから取得したランダム生成データを表示します。</p>
+    <div id="datatable" class="table-container">
+        <p id="state">データを取得中...</p>
+    </div>
+</section>
+<script>
+    const overlay = document.getElementById("loading-overlay");
+    overlay.style.display = "flex";
+    // Fetch data from the server
+    fetch("{% url 'weblearning:api_data' %}") // PythonサーバーのAPIエンドポイントを指定
+        .then(response => response.json())
+        .then(data => {
+            const datatable = document.getElementById('datatable');
+            // テーブル要素を作成
+            const table = document.createElement('table');
+            // テーブルヘッダーとボディを作成
+            const thead = document.createElement('thead');
+            const tbody = document.createElement('tbody');
+
+            // ヘッダーを動的に生成
+            const headers = Object.keys(data.items[0]);
+            const headerRow = document.createElement("tr");
+
+            headers.forEach(key => {
+                const th = document.createElement("th");
+                th.textContent = key;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+
+            // データ行を生成
+            data.items.forEach(item => {
+                const row = document.createElement("tr");
+                headers.forEach(key => {
+                    const td = document.createElement("td");
+                    td.textContent = item[key];
+                    row.appendChild(td);
+                });
+                tbody.appendChild(row);
+            });
+
+            table.appendChild(thead);
+            table.appendChild(tbody);
+            datatable.appendChild(table);
+        })
+        .catch(error => console.error('Error fetching data:', error)).finally(() => {
+            // データ取得完了後に状態メッセージを更新
+            const state = document.getElementById('state');
+            // stateを削除
+            state.remove();
+
+            const overlay = document.getElementById("loading-overlay");
+            overlay.style.display = "none";
+        });
+
+</script>
+{% endblock %}

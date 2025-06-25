@@ -1,0 +1,238 @@
+{% extends 'weblearning/base.html' %}
+
+<!-- codemirrorのテキストエディタ使用 -->
+{% block head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/darcula.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<h1>Playground</h1>
+<section>
+    <p>HTML/CSS で遊んでみてね（セキュリティ上&lt;script&gt;タグは（JavaScript）は実行不可）</p>
+    <div class="playground">
+        <div class="editor-container">
+            <div class="editor">
+                <label for="htmlInput">HTML</label>
+                <textarea id="htmlInput" placeholder="HTMLを入力"></textarea>
+            </div>
+            <div class="editor">
+                <label for="cssInput">CSS</label>
+                <textarea id="cssInput" placeholder="CSSを入力"></textarea>
+            </div>
+        </div>
+        <div class="editor-buttons">
+            <button onclick="updatePreview()">更新</button>
+            <button onclick="clearInput()">クリア</button>
+            <button onclick="showSample()">サンプル</button>
+        </div>
+        <!-- sandbox：javascript実行不可 -->
+        <iframe id="outputFrame" sandbox></iframe>
+    </div>
+
+    <style>
+        .playground {
+            max-width: 1500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .editor-container {
+            display: flex;
+            gap: 1em;
+            flex-wrap: wrap;
+        }
+
+        .editor {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+        }
+
+        .editor label {
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+
+        .editor-buttons {
+            display: flex;
+        }
+
+        .editor-buttons>* {
+            margin: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: vertical;
+            background-color: #fdfdfd;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        @media (max-width: 800px) {
+            .editor-container {
+                flex-direction: column;
+            }
+
+            iframe {
+                height: 250px;
+            }
+        }
+    </style>
+
+
+    <script>
+
+        const htmlEditor = CodeMirror.fromTextArea(document.getElementById("htmlInput"), {
+            mode: "htmlmixed",
+            lineNumbers: true,
+            theme: "darcula",
+            tabSize: 2,
+            lineWrapping: true
+        });
+
+        const cssEditor = CodeMirror.fromTextArea(document.getElementById("cssInput"), {
+            mode: "css",
+            lineNumbers: true,
+            theme: "darcula",
+            tabSize: 2,
+            lineWrapping: true
+        });
+
+        function updatePreview() {
+            const html = htmlEditor.getValue().replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, '');
+            const css = cssEditor.getValue();
+            const output = `<style>${css}</style>${html}`;
+            document.getElementById("outputFrame").srcdoc = output;
+        }
+
+        // エディタ変更時にプレビュー更新
+        htmlEditor.on("change", updatePreview);
+        cssEditor.on("change", updatePreview);
+
+        // テキストエリアのinputイベントにも対応（エディタ未初期化時の保険）
+        document.getElementById("htmlInput").addEventListener("input", updatePreview);
+        document.getElementById("cssInput").addEventListener("input", updatePreview);
+
+
+        function clearInput() {
+            htmlEditor.setValue("");
+            cssEditor.setValue("");
+            updatePreview();
+        }
+
+        function showSample() {
+            htmlEditor.off("change", updatePreview);
+            cssEditor.off("change", updatePreview);
+
+            htmlEditor.setValue(`<h1>見出し１</h1>
+<h2>見出し２</h2>
+<h3>見出し３</h3>
+<p>段落</p>
+<a href="#">リンク</a>
+<p>今日の天気</p>
+<table>
+    <thead>
+        <tr>
+            <th>地域</th>
+            <th>天気</th>
+            <th>最高気温（℃）</th>
+            <th>最低気温（℃）</th>
+            <th>風速（m/s）</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>札幌</td>
+            <td>晴れ</td>
+            <td>20</td>
+            <td>13</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>東京</td>
+            <td>くもり</td>
+            <td>24</td>
+            <td>17</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>名古屋</td>
+            <td>晴れのちくもり</td>
+            <td>22</td>
+            <td>19</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>那覇</td>
+            <td>雨</td>
+            <td>26</td>
+            <td>20</td>
+            <td>3</td>
+        </tr>
+    </tbody>
+</table>`);
+            cssEditor.setValue(`table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #f4f6f8;
+}
+
+th,
+td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tr:hover {
+    background-color: #f0f8ff;
+    transition: background-color 0.3s ease;
+}
+
+th {
+    color: #333;
+    font-weight: 600;
+}`);
+            htmlEditor.on("change", updatePreview);
+            cssEditor.on("change", updatePreview);
+            updatePreview();
+        }
+
+        // 初期表示
+        window.addEventListener("DOMContentLoaded", showSample);
+    </script>
+
+</section>
+{% endblock %}
