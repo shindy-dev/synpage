@@ -1,8 +1,22 @@
 {
-	"name": "synpage",
-	"dockerComposeFile": [
-		"../docker-compose.yaml"
-	],
-	"service": "synpage",
-	"workspaceFolder": "/home/dev/github/synpage"
+    "name": "synpage",
+    "dockerComposeFile": [
+        "../docker-compose.yaml"
+    ],
+    "service": "synpage",
+    "workspaceFolder": "/home/dev/github/synpage",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "MS-CEINTL.vscode-language-pack-ja",
+                "GitHub.copilot",
+                "vscode-icons-team.vscode-icons",
+                "Gruntfuggly.todo-tree",
+                "ms-vscode.live-server",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.debugpy"
+            ]
+        }
+    }
 }
