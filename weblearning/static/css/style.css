@@ -62,6 +62,23 @@ img {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+figure {
+    position: relative;
+    /*figcaptionを基準にする*/
+}
+
+figcaption {
+    position: absolute;
+    /* 画像の下端から10pxの位置 */
+    bottom: 10px;
+    /* 画像の左端から10pxの位置 */
+    left: 10px;
+    /* 半透明の背景 */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px;
+}
+
 pre {
     /* ダークモードに合う背景色 */
     background-color: #1e1e2f;
@@ -135,26 +152,6 @@ h6 {
 
 hr {
     margin: 30px 15px;
-}
-
-h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a,
-h6 a {
-    color: inherit;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-h1 a:hover,
-h2 a:hover,
-h3 a:hover,
-h4 a:hover,
-h5 a:hover,
-h6 a:hover {
-    color: #ff8432;
 }
 
 a {
