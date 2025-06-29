@@ -45,26 +45,28 @@
             <div class="spinner"></div>
         </div>
 
+        <div class="content_panel">
 
-        <h2>Login</h2>
-        <p>ユーザー名：test / パスワード：qwertyuiop@[ でログイン可能</p>
-        <p>デフォルトだとセッションはDBで2週間管理、セッションIDはブラウザのクッキーで保持</p>
-        <p>つまり、ログアウト or ログイン後2週間経過 or ブラウザのクッキーを削除することでセッションは無効となる</p>
-        <o>
-            {% if form.errors %}
-            <p class="error" style="color: red;">ユーザー名またはパスワードが正しくありません。</p>
-            {% endif %}
 
-            <form method="post" style="display: flex; flex-direction: column; width: 300px; margin: 20px;">
-                {% csrf_token %}
-                {{ form.username.label_tag }}
-                {{ form.username }}
+            <h2>Login</h2>
+            <p>ユーザー名：test / パスワード：qwertyuiop@[ でログイン可能</p>
+            <p>デフォルトだとセッションはDBで2週間管理、セッションIDはブラウザのクッキーで保持</p>
+            <p>つまり、ログアウト or ログイン後2週間経過 or ブラウザのクッキーを削除することでセッションは無効となる</p>
+            <o>
+                {% if form.errors %}
+                <p class="error" style="color: red;">ユーザー名またはパスワードが正しくありません。</p>
+                {% endif %}
 
-                {{ form.password.label_tag }}
-                {{ form.password }}
-                <button type="submit" style="margin: 20px 0;">ログイン</button>
-            </form>
+                <form method="post" style="display: flex; flex-direction: column; width: 300px; margin: 20px;">
+                    {% csrf_token %}
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
 
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                    <button type="submit" style="margin: 20px 0;">ログイン</button>
+                </form>
+        </div>
     </main>
 
     <footer>
