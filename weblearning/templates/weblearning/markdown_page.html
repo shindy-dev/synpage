@@ -3,8 +3,10 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block toc %}
-<h2>Contents</h2>
-{{ toc_html|safe }}
+<nav class="toc_panel">
+    <h2>Contents</h2>
+    {{ toc_html|safe }}
+</nav>
 {% endblock %}
 
 {% block content %}
