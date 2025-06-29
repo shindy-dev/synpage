@@ -20,8 +20,9 @@ def _markdown_page(request, dirpath, filename, title):
     with open(md_path, encoding='utf-8') as f:
         md_content = f.read()
 
-    html_content = markdown.markdown(md_content, extensions=["toc", "attr_list", "md_in_html", 'fenced_code', 'tables'])
-    return render(request, 'weblearning/markdown_page.html', {'content': html_content, 'title': title})
+    md = markdown.Markdown(extensions=["toc", "attr_list", "md_in_html", 'fenced_code', 'tables'])
+    html = md.convert(md_content)
+    return render(request, 'weblearning/markdown_page.html', {'content': html, 'title': title, 'toc_html': md.toc})
 
 @login_required
 def index(request):

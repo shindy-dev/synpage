@@ -2,6 +2,11 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% block toc %}
+<h2>Contents</h2>
+{{ toc_html|safe }}
+{% endblock %}
+
 {% block content %}
 <!-- safeフィルターでHTMLをそのまま出力 -->
 {{ content|safe }}

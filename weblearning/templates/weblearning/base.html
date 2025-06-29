@@ -73,7 +73,12 @@
         <div id="loading-overlay">
             <div class="spinner"></div>
         </div>
-        {% block content %}{% endblock %}
+        <nav class="toc_panel">
+            {% block toc %}{% endblock %}
+        </nav>
+        <div class="content_panel">
+            {% block content %}{% endblock %}
+        </div>
     </main>
 
     <footer>

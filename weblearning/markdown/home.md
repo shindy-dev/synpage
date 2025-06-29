@@ -9,10 +9,10 @@
 以降では、『WebLearning』の  
 
 - [アーキテクチャ](#architecture)
-- [ホスティングサービス（Render）](#hosting)
-- [マネージドRDBサービス（Neon）](#rdb)
+- [ホスティングサービス](#hosting)
+- [マネージドRDBサービス](#rdb)
 - [開発環境](#dev)
-- [Webアプリケーションフレームワーク（Django）](#framework)
+- [Webアプリケーションフレームワーク](#framework)
 - [ディレクトリ構造](#dir)
 
 について解説していきます。
@@ -22,7 +22,7 @@ PCがあれば 「誰でも」、「簡単に」、「無料で」構築でき�
 ---
 
 ## アーキテクチャ {#architecture}
-『WebLearning』は 「Docker」を使用した**シンプルなDjango製のWebアプリケーション**であり、以下のアーキテクチャ図に基づいて構築しています。なお構築、開発、運用において電気代以外の**費用はかかりません**🎉  
+『WebLearning』は 「Docker」を使用した**シンプルなDjango製のWebアプリケーション**であり、以下のアーキテクチャ図に基づいて構築しています。なお構築、開発、運用においてPC、電気代以外の**費用はかかりません**🎉  
 
 <figure>
   <img src="/static/images/architecture.png" alt="アーキテクチャ図 - 全体" width="1000px" >
@@ -48,7 +48,7 @@ A.  評価（100点満点）: 85点
 
 ---
 
-## ホスティングサービス（[Render](https://render.com/)）<span style='font-size:1rem; font-weight: normal;'>2025/6/23時点</span> {#hosting}
+## ホスティングサービス {#hosting}
 
 <img src="/static/images/logo/Render_logo_Black.svg" alt="Render_logo" width="380px" style="background-color:#FFFFFF;">
 
@@ -57,7 +57,7 @@ A.  評価（100点満点）: 85点
   <figcaption>アーキテクチャ図 - 本番環境</figcaption>
 </figure>
 
-**「Render」は軽量な構成のWebアプリを無料で簡単に公開できるクラウドホスティングサービス（PaaS:Platform as a Service）**です。インフラのことはサービスに委譲できるため、開発者は提供するWebアプリケーションの開発に注力することができます。PaaSの代表例としては、「Microsoft Azure App Service」、「AWS Elastic Beanstalk」、「Google Cloud - Google App Engine」、「Fly.io」などが挙げられます。「Render」の採用理由と無料プランにおける特徴を以下に記載します。  
+**「[Render](https://render.com/)」は軽量な構成のWebアプリを無料で簡単に公開できるクラウドホスティングサービス（PaaS:Platform as a Service）**です。インフラのことはサービスに委譲できるため、開発者は提供するWebアプリケーションの開発に注力することができます。PaaSの代表例としては、「Microsoft Azure App Service」、「AWS Elastic Beanstalk」、「Google Cloud - Google App Engine」、「Fly.io」などが挙げられます。「Render」の採用理由と無料プランにおける特徴を以下に記載します。(2025/6/23時点の情報です。)  
 
 ### Renderの[無料プラン](https://render.com/docs/free)の特徴
 - **クレジットカード登録不要で利用可能**  
@@ -88,11 +88,11 @@ Webアプリケーションのソースコードや「Dockerfile」を管理し�
 
 ---
 
-## マネージドRDBサービス（[Neon](https://console.neon.tech/)） {#rdb}
+## マネージドRDBサービス {#rdb}
 
 <img src="/static/images/logo/neon_logo_color.svg" alt="neon_logo" width="380px" style="background-color:#FFFFFF;">
 
-「Neon」は**サーバーレスなPostgresデータベースを提供するDBaaS（Database as a Service）**です。「Neon」の特徴として、ブランチ機能が挙げられます。本番環境と開発環境を切り替えることもできますし、例えば本番環境からブランチを作成した場合、本番環境のデータをコピーしてくれるので、本番環境のデータを変更せずに検証したい場合にも非常に有用です。Webアプリケーションや開発環境との接続方法も簡単で、URL形式の接続情報を環境変数として「Render」や開発環境に登録することで簡単に接続することができます。（DBeaverやA5M2等のSQLクライアントツールからも接続可能です。）また、無料プランのサーバスペックは **「1.0 GB RAM / 0.25 CPU / 0.5 GB Storage」** です。もちろん**クレジットカード登録不要**で利用することができます。料金体系詳細については[こちら](https://neon.com/pricing)をご確認ください。『WebLearning』では「PostgreSQL」のバージョンには 17 を採用しており、プロバイダーには「AWS」、リージョンにはレイテンシを抑えるため「Render」のWebサーバのリージョンに近いリージョンを採用しています。
+「[Neon](https://console.neon.tech/)」は**サーバーレスなPostgresデータベースを提供するDBaaS（Database as a Service）**です。「Neon」の特徴として、ブランチ機能が挙げられます。本番環境と開発環境を切り替えることもできますし、例えば本番環境からブランチを作成した場合、本番環境のデータをコピーしてくれるので、本番環境のデータを変更せずに検証したい場合にも非常に有用です。Webアプリケーションや開発環境との接続方法も簡単で、URL形式の接続情報を環境変数として「Render」や開発環境に登録することで簡単に接続することができます。（DBeaverやA5M2等のSQLクライアントツールからも接続可能です。）また、無料プランのサーバスペックは **「1.0 GB RAM / 0.25 CPU / 0.5 GB Storage」** です。もちろん**クレジットカード登録不要**で利用することができます。料金体系詳細については[こちら](https://neon.com/pricing)をご確認ください。『WebLearning』では「PostgreSQL」のバージョンには 17 を採用しており、プロバイダーには「AWS」、リージョンにはレイテンシを抑えるため「Render」のWebサーバのリージョンに近いリージョンを採用しています。
 
 次章では『WebLearning』の開発環境について解説いたします。
 
@@ -120,7 +120,7 @@ Webアプリケーションのソースコードや「Dockerfile」を管理し�
 Dockerイメージのビルドを行うために利用します。利用にはDockerアカウントの作成と開発端末へ「Docker Desktop」をインストールする必要があります。  
 [Windows | Docker Docs](https://docs.docker.com/desktop/setup/install/windows-install/)  
 
-### Visual Studio Code（任意のテキストエディタ）
+### Visual Studio Code（任意）
 
 <img src="/static/images/logo/vscode.svg" alt="vscode_logo" width="128px" style="background-color:#FFFFFF;">
 
@@ -134,7 +134,7 @@ Dockerイメージのビルドを行うために利用します。利用にはDo
 プロジェクト内のドキュメントやソースコードをバージョン管理するために利用します。管理単位は「リポジトリ」と呼ばれ、本構成ではリモートリポジトリをGitHub上にホストしています。  
 [Git - Gitのインストール](https://git-scm.com/book/ja/v2/%E4%BD%BF%E3%81%84%E5%A7%8B%E3%82%81%E3%82%8B-Git%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)  
 
-### （任意）Gitクライアント
+### Gitクライアント（任意）
 Gitの操作をGUIから行うための支援ツールです。「GitHub Desktop」、「SourceTree」、「Gitkraken」、「Visual Studio Codeの拡張機能」等様々なツールがあります。現状『WebLearning』ではGitの基本操作しかしていないためテキストエディタとしても利用している「Visual Studio Codeの拡張機能」を採用しています。
 
 ### GitHub
@@ -148,7 +148,7 @@ Gitの操作をGUIから行うための支援ツールです。「GitHub Desktop
 
 <img src="/static/images/logo/slonik_with_black_text_and_tagline.gif" alt="PostgreSQL_Logo" width="380px" style="background-color:#FFFFFF;">
 
-オープンソースなリレーショナルデータベース管理システム（RDBMS）です。高性能でありながら商用利用可能な点で人気なようです。DjangoはORM（Object-Relational Mapping）設計のため、簡単なWebアプリケーションであれば、複雑なSQLを組む必要がないのでRDBMSは何でも良いのですが、シェア率の高いメジャーなものを利用してみたかったため採用しています。『WebLearning』ではユーザー管理、セッション管理、アプリケーションデータベース目的で利用しておりますが、[前述](#rdb)のDBaaS「Neon」を採用しているため、クラウド上でデータベース管理しております。  
+オープンソースなリレーショナルデータベース管理システム（RDBMS）です。主に高性能でありながら商用利用可能な点で人気なようです。DjangoはORM（Object-Relational Mapping）設計のため、簡単なWebアプリケーションであれば、複雑なSQLを組む必要がないのでRDBMSは何でも良いのですが、シェア率の高いメジャーなものを利用してみたかったため採用しています。『WebLearning』ではユーザー管理、セッション管理、アプリケーションデータベース目的で利用しておりますが、[前述](#rdb)のDBaaS「Neon」を採用しているため、クラウド上でデータベース管理しております。  
 [PostgreSQL: The world's most advanced open source database](https://www.postgresql.org/)
 
 次章では『WebLearning』で採用している、Webアプリケーションフレームワークについて解説いたします。
@@ -208,6 +208,8 @@ synpage/
 ├─ setup.sh                          # 同上（bash用）
 └─ todo.md                           # タスク管理用のメモ（任意）
 ```
+
+以上『WebLearning』の構成についてのご紹介でした！必ずしもこの構成でないといけないというわけではないので、ご自身の環境や好みに合わせて学習用の環境を構築してみてください。
 
 ---
 
