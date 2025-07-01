@@ -427,6 +427,7 @@ body.dark-mode {
 
 body.dark-mode header,
 body.dark-mode #nav-menu,
+body.dark-mode .dropdown-list,
 body.dark-mode footer {
     background-color: #222c36;
     color: #f3f3f3;
