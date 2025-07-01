@@ -58,6 +58,7 @@
                 </ul>
             </nav>
             <div id="nav-logout">
+                <button id="toggle-darkmode" style="margin:20px;"></button>
                 <p style="color: white;">{{ user.username }}
                 <p>
                 <form action="{% url 'weblearning:logout' %}" method="post" style="display:inline; padding: 0 20px;">

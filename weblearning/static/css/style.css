@@ -102,7 +102,6 @@ h6 {
     font-weight: 700;
     line-height: 1.4;
     margin: 1.2rem 1rem 0.6rem;
-    color: #222;
     /* 濃いグレーで目に優しく */
 }
 
@@ -119,25 +118,21 @@ h2 {
 
 h3 {
     font-size: 1.4rem;
-    color: #333;
 }
 
 h4 {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #444;
 }
 
 h5 {
     font-size: 1rem;
     font-weight: 500;
-    color: #555;
 }
 
 h6 {
     font-size: 0.9rem;
     font-weight: 400;
-    color: #666;
     font-style: italic;
 }
 
@@ -242,7 +237,8 @@ button:hover {
     display: none;
 }
 
-.title {
+.title,
+body.dark-mode .title {
     color: #f3f3f3;
     font-size: 1.45rem;
     font-weight: bold;
@@ -423,6 +419,55 @@ button:hover {
     list-style: none;
 }
 
+/* ====== ダークモード ====== */
+body.dark-mode {
+    background: #181a1b;
+    color: #e0e0e0;
+}
+
+body.dark-mode header,
+body.dark-mode #nav-menu,
+body.dark-mode footer {
+    background-color: #222c36;
+    color: #f3f3f3;
+}
+
+body.dark-mode .content_panel {
+    background: #23272e;
+    color: #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .toc_panel {
+    background: #23272e;
+    color: #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode a {
+    color: #7abaff;
+}
+
+body.dark-mode a:hover {
+    color: #ffb366;
+    border-bottom: 2px solid #ffb366;
+}
+
+body.dark-mode pre {
+    background-color: #15161a;
+    color: #e0e0e0;
+}
+
+body.dark-mode table {
+    background: #23272e;
+    color: #e0e0e0;
+}
+
+body.dark-mode th,
+body.dark-mode td {
+    border-bottom: 1px solid #444;
+}
+
 /* ====== レスポンシブ対応 ====== */
 @media screen and (min-width: 1200px) {
     .toc_panel {
@@ -510,7 +555,6 @@ button:hover {
     #nav-menu>div {
         height: 60px;
         width: 100%;
-        background-color: rgba(0, 80, 134, 0.85);
         position: sticky;
         top: 0;
         padding: 0;
@@ -532,6 +576,10 @@ button:hover {
     #nav-menu-icon {
         margin: 25px;
         margin-right: 0;
+    }
+
+    .dropdown-list {
+        background-color: rgba(0, 0, 0, 0);
     }
 }
 

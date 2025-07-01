@@ -34,6 +34,35 @@ class NavDrawer {
     }
 }
 
+function setDarkMode(btn, enabled) {
+    if (enabled) {
+        document.body.classList.add('dark-mode');
+        document.cookie = "darkmode=1;path=/;max-age=31536000";
+    } else {
+        document.body.classList.remove('dark-mode');
+        document.cookie = "darkmode=0;path=/;max-age=31536000";
+    }
+    btn.innerHTML = enabled ? "☀️" : "🌙";
+}
+
+function getDarkModeFromCookie() {
+    return document.cookie.split(';').some(c => c.trim() === "darkmode=1");
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    // ボタンで切り替え
+    const btn = document.getElementById('toggle-darkmode');
+
+    // 初期状態
+    setDarkMode(btn, getDarkModeFromCookie());
+
+    if (btn) {
+        btn.addEventListener('click', function () {
+            setDarkMode(btn, !document.body.classList.contains('dark-mode'));
+        });
+    }
+});
+
 // 初期化
 window.addEventListener('DOMContentLoaded', () => {
     new NavDrawer('nav-menu-toggle', 'dummy');
