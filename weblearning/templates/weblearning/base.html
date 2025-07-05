@@ -48,12 +48,17 @@
                     <li class="dropdown">
                         <div tabindex="0">Documents<span style="margin-left: 1.2em;">▼</span></div>
                         <ul class="dropdown-list fade-in">
-                            <li><a href="{% url 'weblearning:docs' doc_type='html' %}">HTML</a>
+                            <!-- <li><a href="{% url 'weblearning:docs' doc_type='html' %}">HTML</a>
                             </li>
                             <li><a href="{% url 'weblearning:docs' doc_type='css' %}">CSS</a></li>
                             <li><a href="{% url 'weblearning:docs' doc_type='js' %}">JavaScript</a></li>
                             <li><a href="{% url 'weblearning:docs' doc_type='network' %}">Network</a></li>
-                            <li><a href="{% url 'weblearning:docs' doc_type='security' %}">Security</a></li>
+                            <li><a href="{% url 'weblearning:docs' doc_type='security' %}">Security</a></li> -->
+                            {% for doc in docs_list %}
+                            <li>
+                                <a href="{% url 'weblearning:docs' doc_type=doc %}">{{ doc }}</a>
+                            </li>
+                            {% endfor %}
                         </ul>
                     </li>
                 </ul>
