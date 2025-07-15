@@ -1,0 +1,49 @@
+name: Trigger auto deployment for synpage
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    paths:
+    - '**'
+    - '.github/workflows/synpage-AutoDeployTrigger-3b94ff95-cd70-447d-bcf7-5e27d9f26545.yml'
+
+  # Allow manual trigger 
+  workflow_dispatch:      
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions: 
+      id-token: write #This is required for requesting the OIDC JWT Token
+      contents: read #Required when GH token is used to authenticate with private repo
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.SYNPAGE_AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.SYNPAGE_AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.SYNPAGE_AZURE_SUBSCRIPTION_ID }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v2
+        with:
+          appSourcePath: ${{ github.workspace }}
+          _dockerfilePathKey_: _dockerfilePath_
+          _targetLabelKey_: _targetLabel_
+          registryUrl: 
+          registryUsername: ${{ secrets.SYNPAGE_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.SYNPAGE_REGISTRY_PASSWORD }}
+          containerAppName: synpage
+          resourceGroup: ResGroup-shindy
+          imageToBuild: default/[parameters('containerAppName')]:${{ github.sha }}
+          _buildArgumentsKey_: |
+            _buildArgumentsValues_
+
+
